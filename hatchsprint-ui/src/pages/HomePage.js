@@ -5,7 +5,15 @@ export default function HomePage() {
         <>
             <h1>HatchSprint</h1>
             <ul>
-                <Link to="/restaurants">Restaurant Stuff</Link>
+                <li>
+                    <Link to="/restaurants">Restaurant Stuff</Link>
+                </li>
+                <li>
+                    <Link to="/customers">Customer Stuff</Link>
+                </li>
+                <li>
+                    <Link to="/drivers">Driver Stuff</Link>
+                </li>
             </ul>
         </>
     )
