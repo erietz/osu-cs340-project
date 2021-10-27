@@ -14,6 +14,12 @@ export default function HomePage() {
                 <li>
                     <Link to="/drivers">Driver Stuff</Link>
                 </li>
+                <li>
+                    <Link to="/orders">Order Stuff</Link>
+                </li>
+                <li>
+                    <Link to="/products">Product Stuff</Link>
+                </li>
             </ul>
         </>
     )

@@ -11,6 +11,21 @@ export default function RestaurantPage() {
         be on the home page as well?
 
             </p>
+            <table id="restaurants" class="center">
+            <thead>
+                <tr>
+                    <td>restaurantID</td>
+                    <td>restaurantName</td>
+                    <td>streetAddressLine1</td>
+                    <td>streetAddressLine2</td>
+                    <td>city</td>
+                    <td>state</td>
+                    <td>zip</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
+            </thead>
+        </table>
         </>
     )
 }
