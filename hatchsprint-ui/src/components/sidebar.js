@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
-import SideBar from '../components/sidebar.js';
 
-export default function HomePage() {
+export default function SideBar() {
     return (
-        <>
-            <SideBar/>
-            <br/>
-            <h1>HatchSprint</h1>
+        <div class="sidebar">
+            <header><Link to="/">HatchSprint</Link></header>
             <ul>
                 <li>
                     <Link to="/restaurants">Restaurant Stuff</Link>
@@ -24,6 +21,6 @@ export default function HomePage() {
                     <Link to="/products">Product Stuff</Link>
                 </li>
             </ul>
-        </>
+        </div>
     )
 }

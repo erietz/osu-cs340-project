@@ -1,6 +1,11 @@
+import SideBar from '../components/sidebar.js';
+
 export default function RestaurantPage() {
     return (
         <>
+            <SideBar/>
+            <br/>
+
             <h1>Restaurant Stuff Here</h1>
 
             <p>

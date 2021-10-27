@@ -1,6 +1,11 @@
+import SideBar from '../components/sidebar.js';
+
 export default function OrderPage() {
     return (
         <>
+            <SideBar/>
+            <br/>
+
             <h1>Order Stuff Here</h1>
 
             <p>

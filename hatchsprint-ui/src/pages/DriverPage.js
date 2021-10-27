@@ -1,6 +1,11 @@
+import SideBar from '../components/sidebar.js';
+
 export default function DriverPage() {
     return (
         <>
+            <SideBar/>
+            <br/>
+
             <h1>Driver Stuff Here</h1>
 
             <p>

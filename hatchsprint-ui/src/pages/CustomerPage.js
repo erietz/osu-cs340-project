@@ -1,6 +1,11 @@
+import SideBar from '../components/sidebar.js';
+
 export default function CustomerPage() {
     return (
         <>
+            <SideBar/>
+            <br/>
+
             <h1>Customer Stuff Here</h1>
 
             <p>

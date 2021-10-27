@@ -1,6 +1,11 @@
+import SideBar from '../components/sidebar.js';
+
 export default function ProductPage() {
     return (
         <>
+            <SideBar/>
+            <br/>
+
             <h1>Product Stuff Here</h1>
 
             <p>
@@ -20,6 +25,24 @@ export default function ProductPage() {
                     <td>Delete</td>
                 </tr>
             </thead>
+            <tr>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+            </tr>
+            <tr>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+                <td> test here </td>
+            </tr>
         </table>
             </p>
         </>
