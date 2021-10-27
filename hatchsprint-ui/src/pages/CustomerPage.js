@@ -7,8 +7,6 @@ export default function CustomerPage() {
         On this page we could have links to create, delete, and update
         customers. Additionally we could add some features to view orders for a
         customer.
-
-        Test push
             </p>
         </>
     )
