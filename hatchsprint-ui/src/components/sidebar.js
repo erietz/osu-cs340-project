@@ -6,19 +6,19 @@ export default function SideBar() {
             <header><Link to="/">HatchSprint</Link></header>
             <ul>
                 <li>
-                    <Link to="/restaurants">Restaurant Stuff</Link>
+                    <Link to="/restaurants">Restaurants</Link>
                 </li>
                 <li>
-                    <Link to="/customers">Customer Stuff</Link>
+                    <Link to="/customers">Customers</Link>
                 </li>
                 <li>
-                    <Link to="/drivers">Driver Stuff</Link>
+                    <Link to="/drivers">Drivers</Link>
                 </li>
                 <li>
-                    <Link to="/orders">Order Stuff</Link>
+                    <Link to="/orders">Orders</Link>
                 </li>
                 <li>
-                    <Link to="/products">Product Stuff</Link>
+                    <Link to="/products">Products</Link>
                 </li>
             </ul>
         </div>

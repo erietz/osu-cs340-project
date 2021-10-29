@@ -8,7 +8,7 @@ html, body {
 }
 
 body {
-    max-width: 50em;
+    max-width: 900px;
     /* right offset for the sidebar */
     margin: 0 0 0 200px;
     padding: 1.5em;
@@ -87,10 +87,33 @@ table.center {
 
 
 .sidebar li {
-  padding-left: 10px;
+  /* padding-left: 10px; */
   list-style-type: none;
 }
 
 .sidebar li:hover a{
-  padding-left: 20px;
+  background-color: #A2708E;
+  /* padding-left: 20px; */
+}
+
+form {
+  padding: 10px;
+  margin: 10px;
+}
+
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+    padding: 5px;
+    margin: 5px;
+}
+
+input {
+  display: inline-block;
+  float: left;
+  padding: 5px;
+  margin: 5px;
 }

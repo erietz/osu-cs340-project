@@ -1,4 +1,5 @@
 import SideBar from '../components/sidebar.js';
+import CreateRestaurant from '../components/CreateRestaurantForm.js';
 
 export default function RestaurantPage() {
     return (
@@ -6,16 +7,11 @@ export default function RestaurantPage() {
             <SideBar/>
             <br/>
 
-            <h1>Restaurant Stuff Here</h1>
+            <h1>Manage Restaurants</h1>
 
-            <p>
+            <CreateRestaurant/>
+            <br/>
 
-        On this page we could functionality to create, delete, and update
-        resaurants. It would also make sense to have a link to a page from here
-        manage the products that belong to a restaurant. Or maybe this should
-        be on the home page as well?
-
-            </p>
             <table id="restaurants" class="center">
             <thead>
                 <tr>
@@ -30,6 +26,17 @@ export default function RestaurantPage() {
                     <td>Delete</td>
                 </tr>
             </thead>
+            <tr>
+                <td>1</td>
+                <td>Abelardos</td>
+                <td>123 Foo Street</td>
+                <td>Suite 21</td>
+                <td>Fargo</td>
+                <td>North Dakota</td>
+                <td>12345</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
         </table>
         </>
     )

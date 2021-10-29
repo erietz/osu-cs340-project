@@ -6,22 +6,30 @@ export default function HomePage() {
         <>
             <SideBar/>
             <br/>
-            <h1>HatchSprint</h1>
+
+            <h1>HatchSprint Home Page</h1>
+
+            <p>
+        On this page there will be a fancy logo here. We will also include
+        fancy icons that correspond to each of the page links below.
+
+            </p>
+
             <ul>
                 <li>
-                    <Link to="/restaurants">Restaurant Stuff</Link>
+                    <Link to="/restaurants">Restaurants</Link>
                 </li>
                 <li>
-                    <Link to="/customers">Customer Stuff</Link>
+                    <Link to="/customers">Customers</Link>
                 </li>
                 <li>
-                    <Link to="/drivers">Driver Stuff</Link>
+                    <Link to="/drivers">Drivers</Link>
                 </li>
                 <li>
-                    <Link to="/orders">Order Stuff</Link>
+                    <Link to="/orders">Orders</Link>
                 </li>
                 <li>
-                    <Link to="/products">Product Stuff</Link>
+                    <Link to="/products">Products</Link>
                 </li>
             </ul>
         </>
