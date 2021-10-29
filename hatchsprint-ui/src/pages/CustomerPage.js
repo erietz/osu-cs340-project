@@ -1,4 +1,5 @@
 import SideBar from '../components/sidebar.js';
+import CustomerForm from '../components/CreateCustomerForm.js';
 
 export default function CustomerPage() {
     return (
@@ -6,13 +7,10 @@ export default function CustomerPage() {
             <SideBar/>
             <br/>
 
-            <h1>Customer Stuff Here</h1>
+            <h1>Manage Customers</h1>
 
-            <p>
-        On this page we could have links to create, delete, and update
-        customers. Additionally we could add some features to view orders for a
-        customer.
-            </p>
+            <CustomerForm/>
+
             <table id="customers" class="center">
             <thead>
                 <tr>
@@ -31,6 +29,21 @@ export default function CustomerPage() {
                     <td>Delete</td>
                 </tr>
             </thead>
+                <tr>
+                    <td>1</td>
+                    <td>Ethan</td>
+                    <td>Rietz</td>
+                    <td>ethan@rietz.com</td>
+                    <td>er</td>
+                    <td>123 Foo Street</td>
+                    <td></td>
+                    <td>Bar</td>
+                    <td>AZ</td>
+                    <td>64564</td>
+                    <td>478-123-4234</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
         </table>
         </>
     )
