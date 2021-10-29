@@ -1,4 +1,5 @@
 import SideBar from '../components/sidebar.js';
+import CreateProduct from '../components/CreateProductForm.js';
 
 export default function ProductPage() {
     return (
@@ -6,12 +7,10 @@ export default function ProductPage() {
             <SideBar/>
             <br/>
 
-            <h1>Product Stuff Here</h1>
+            <h1>Manage Products</h1>
 
-            <p>
+            <CreateProduct/>
 
-        On this page we will have the functionality to add, edit, and delete products
-        </p>
         <p>
         <table id="products" class="center">
             <thead>
@@ -25,24 +24,15 @@ export default function ProductPage() {
                     <td>Delete</td>
                 </tr>
             </thead>
-            <tr>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-            </tr>
-            <tr>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-                <td> test here </td>
-            </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Arizona Burrito</td>
+                    <td>yes</td>
+                    <td>$8.98</td>
+                    <td>1</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
         </table>
             </p>
         </>

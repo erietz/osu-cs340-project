@@ -1,4 +1,5 @@
 import SideBar from '../components/sidebar.js';
+import SearchByCustomer from '../components/SearchOrders.js';
 
 export default function OrderPage() {
     return (
@@ -6,13 +7,10 @@ export default function OrderPage() {
             <SideBar/>
             <br/>
 
-            <h1>Order Stuff Here</h1>
+            <h1>View Orders</h1>
 
-            <p>
+            <SearchByCustomer/>
 
-        On this page we will have the functionality to add, edit, and delete orders
-
-            </p>
             <p>
         <table id="orders" class="center">
             <thead>
@@ -31,6 +29,20 @@ export default function OrderPage() {
                     <td>Delete</td>
                 </tr>
             </thead>
+                <tr>
+                    <td>1</td>
+                    <td>$39</td>
+                    <td>$4.00</td>
+                    <td>$5.00</td>
+                    <td>$48</td>
+                    <td>2021-10-28</td>
+                    <td>13:34</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
         </table>
             </p>
         </>

@@ -7,7 +7,7 @@ export default function DriverPage() {
             <SideBar/>
             <br/>
 
-            <h1>Driver Stuff Here</h1>
+            <h1>Manage Drivers</h1>
 
             <CreateDriver/>
 
