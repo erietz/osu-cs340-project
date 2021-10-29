@@ -39,7 +39,7 @@ export default function CreateCustomer() {
             <br/>
 
             <label for="phone">Phone Number</label>
-            <input type="text" id="phone" name="phone"></input>
+            <input type="text" id="phone" name="zip"></input>
             <br/>
 
         </form>

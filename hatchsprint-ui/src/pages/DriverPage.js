@@ -1,4 +1,5 @@
 import SideBar from '../components/sidebar.js';
+import CreateDriver from '../components/CreateDriverForm.js';
 
 export default function DriverPage() {
     return (
@@ -8,11 +9,7 @@ export default function DriverPage() {
 
             <h1>Driver Stuff Here</h1>
 
-            <p>
-
-        This page will be for viewing and managing drivers.
-
-            </p>
+            <CreateDriver/>
 
             <p>
         <table id="drivers" class="center">
@@ -26,6 +23,14 @@ export default function DriverPage() {
                     <td>Delete</td>
                 </tr>
             </thead>
+                <tr>
+                    <td>1</td>
+                    <td>Ethan</td>
+                    <td>Rietz</td>
+                    <td>123456789</td>
+                    <td>Edit</td>
+                    <td>Delete</td>
+                </tr>
         </table>
             </p>
         </>
