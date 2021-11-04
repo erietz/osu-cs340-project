@@ -31,6 +31,12 @@ export default function HomePage() {
                 <li>
                     <Link to="/products">Products</Link>
                 </li>
+                <li>
+                    <Link to="/orderproducts">OrderProducts</Link>
+                </li>
+                <li>
+                    <Link to="/restaurantcustomers">RestaurantCustomers</Link>
+                </li>
             </ul>
         </>
     )

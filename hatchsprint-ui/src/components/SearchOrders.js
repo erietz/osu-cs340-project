@@ -1,4 +1,4 @@
-export default function SearchByCustomer() {
+export default function SearchByOrder() {
     return (
         <div>
             <label for="customer">Search By Customer Name</label>
