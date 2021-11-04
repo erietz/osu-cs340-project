@@ -25,6 +25,9 @@ export default function CreateRestaurant() {
             <label for="zip">zip</label>
             <input type="text" id="zip" name="zip" placeholder = "Zip"></input>
             <br/>
+            <label for="customers">Customers</label>
+            <input type="text" id="customers" name="customers" placeholder = "Enter Customer ID"></input>
+            <br/>
             <button>Create</button>
         </form>
     )

@@ -15,11 +15,15 @@ export default function CreateOrder() {
             <br/>
 
             <label for="customerID">Customer ID</label>
-            <input type="text" id="customerID" name="customerID"></input>
+            <input type="text" id="customerID" name="customerID" placeholder="Enter Customer ID"></input>
             <br/>
 
             <label for="restaurantID">Restaurant ID </label>
-            <input type="text" id="restaurantID" name="restaurantID"></input>
+            <input type="text" id="restaurantID" name="restaurantID" placeholder="Enter Restaurant ID"></input>
+            <br/>
+
+            <label for="products">Products</label>
+            <input type="text" id="products" name="products" placeholder="Enter Product ID"></input>
             <br/>
             <button>Create</button>
         </form>
