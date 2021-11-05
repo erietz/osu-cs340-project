@@ -17,10 +17,7 @@ export default function CreateProduct() {
             <label for="restid">Restaurant ID</label>
             <input type="text" id="restid" name="restid" placeholder = "Restaurant ID"></input>
             <br/>
-
-            <label for="prodid">Product ID</label>
-            <input type="text" id="prodid" name="prodid" placeholder = "Product ID"></input>
-            <br/>
+            
             <button>Create</button>
         </form>
     )
