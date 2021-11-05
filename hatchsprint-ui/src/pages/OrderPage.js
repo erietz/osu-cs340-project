@@ -1,6 +1,6 @@
 import SideBar from '../components/sidebar.js';
 import OrderForm from '../components/CreateOrderForm.js';
-import SearchByOrder from '../components/SearchOrders.js';
+import AddAnother from '../components/AddAnotherProduct.js';
 
 export default function OrderPage() {
     return (
@@ -9,10 +9,8 @@ export default function OrderPage() {
             <br/>
 
             <h1>Manage Orders</h1>
-
             <OrderForm/>
-            <p></p>
-            
+
 
             <p>
         <table id="orders" class="center">
@@ -49,5 +47,6 @@ export default function OrderPage() {
         </table>
             </p>
         </>
+        
     )
 }

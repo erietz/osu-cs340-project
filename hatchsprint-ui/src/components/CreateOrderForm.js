@@ -1,5 +1,8 @@
+import AddAnotherProduct from './AddAnotherProduct.js';
+
 export default function CreateOrder() {
     return (
+        <div>
         <form>
 
             <label for="pretaxCost">Pre-Tax Cost</label>
@@ -21,11 +24,15 @@ export default function CreateOrder() {
             <label for="restaurantID">Restaurant ID </label>
             <input type="text" id="restaurantID" name="restaurantID" placeholder="Enter Restaurant ID"></input>
             <br/>
-
             <label for="products">Products</label>
             <input type="text" id="products" name="products" placeholder="Enter Product ID"></input>
             <br/>
+
             <button>Create</button>
         </form>
+        <div class = "container">
+        <AddAnotherProduct/>
+        </div>
+        </div>
     )
 }

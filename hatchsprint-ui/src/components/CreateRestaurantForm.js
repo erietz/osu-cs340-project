@@ -1,5 +1,8 @@
+import AddAnotherCustomer from "./AddAnotherCustomer";
+
 export default function CreateRestaurant() {
     return (
+        <div>
         <form>
 
             <label for="name">Restaurant Name</label>
@@ -29,6 +32,11 @@ export default function CreateRestaurant() {
             <input type="text" id="customers" name="customers" placeholder = "Customer ID"></input>
             <br/>
             <button>Create</button>
-        </form>
+            </form>
+            <div class = "container">
+        <AddAnotherCustomer/>
+        </div>
+        </div>
+
     )
 }
