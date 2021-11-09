@@ -98,16 +98,16 @@ CREATE TABLE IF NOT EXISTS `Products` (
 DROP TABLE IF EXISTS `Orders`;
 CREATE TABLE `Orders` (
   `orderID` INT NOT NULL AUTO_INCREMENT UNIQUE,
-  `preTax` FLOAT NOT NULL,
+  `preTaxCost` FLOAT NOT NULL,
   `tax` FLOAT NOT NULL,
   `tip` FLOAT NOT NULL,
   `totalCost` FLOAT NOT NULL,
   `date` DATE NOT NULL,
-  `time` FLOAT NOT NULL,
+  `time` VARCHAR(45) NOT NULL,
   `driverID` INT NOT NULL,
   `customerID` INT NOT NULL,
-  `productID` INT NOT NULL,
-  PRIMARY KEY (`orderID`, `driverID`, `customerID`, `productID`)
+  `restaurantID` INT NOT NULL,
+  PRIMARY KEY (`orderID`, `driverID`, `customerID`, `restaurantID`)
 );
 /* -- */
 
@@ -160,9 +160,9 @@ ALTER TABLE `Orders`
 /* -- */
 -- Table Orders Foreign Keys
 ALTER TABLE `Orders`
-  ADD CONSTRAINT `productID`
-    FOREIGN KEY (`productID`)
-    REFERENCES `Products` (`productID`)
+  ADD CONSTRAINT `restaurantID`
+    FOREIGN KEY (`restaurantID`)
+    REFERENCES `Restaurants` (`restaurantID`)
     ON DELETE CASCADE
 ;
 /* -- */
@@ -213,8 +213,24 @@ INSERT INTO Products (productName, availability, price, restaurantID)
 /* -- */
 
 /* -- */
+INSERT INTO Orders
+  (preTaxCost, tax, tip, totalCost, `date`, time, customerID, driverID,
+    restaurantID)
+  VALUES
+    (34.34, 2.45, 5.00, 41.79, '2021-11-09', '10:00:22',
+      (select customerID from Customers where firstName = 'John' and lastName = 'Doe'),
+      (select driverID from Drivers where firstName = 'Ethan' and lastName = 'Rietz'),
+      (select restaurantID from Restaurants where restaurantName = 'Abelardos')
+    )
+;
+/* -- */
+
+/* -- */
 select * from Drivers;
 select * from Customers;
 select * from Restaurants;
 select * from Products;
+select * from Orders;
+select * from RestaurantCustomers;
+select * from OrderProducts;
 /* -- */
