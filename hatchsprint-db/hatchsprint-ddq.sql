@@ -171,4 +171,10 @@ ALTER TABLE `Orders`
 -- Add Sample data
 -------------------------------------------------------------------------------
 
-/* INSERT INTO */ 
+/* -- */
+INSERT INTO Drivers (firstName, lastName, licenseNumber)
+VALUES
+  ('Ethan', 'Rietz', '1235ABC'),
+  ('Jason', 'Marsh', '456CDE')
+;
+/* -- */
