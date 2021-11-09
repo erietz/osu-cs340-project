@@ -29,7 +29,7 @@ CREATE TABLE `Customers` (
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(2) NOT NULL,
   `zip` INT(5) NOT NULL,
-  `phoneNumber` INT NULL,
+  `phoneNumber` BIGINT NULL,
   PRIMARY KEY (`customerID`)
 );
 /* -- */
@@ -176,5 +176,17 @@ INSERT INTO Drivers (firstName, lastName, licenseNumber)
 VALUES
   ('Ethan', 'Rietz', '1235ABC'),
   ('Jason', 'Marsh', '456CDE')
+;
+/* -- */
+
+/* -- */
+INSERT INTO Customers
+  (firstName, lastName, email, password, streetAddress1, streetAddress2, city,
+    state, zip, phoneNumber)
+  VALUES
+    ('John', 'Doe', 'john@doe.com', 'password!', '123 First St', 'Apt 2', 'Foobar',
+      'IA', 50189, 5551234567),
+    ('Jane', 'Thorton', 'jane@thorton.me', 'secret', '321 Second Ave', 'Suite
+      2', 'Spam', 'KA', 78303, 5559876543)
 ;
 /* -- */
