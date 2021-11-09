@@ -190,3 +190,12 @@ INSERT INTO Customers
       2', 'Spam', 'KA', 78303, 5559876543)
 ;
 /* -- */
+
+/* -- */
+INSERT INTO Restaurants
+  (restaurantName, streetAddress1, streetAddress2, city, state, zip)
+  VALUES
+    ('Abelardos', '287 Center St', 'Unit 32', 'Omaha', 'NE', 68190),
+    ('Fiji', '928 Bogus St', 'Suite 98', 'Los Angeles', 'CA', 98765)
+;
+/* -- */
