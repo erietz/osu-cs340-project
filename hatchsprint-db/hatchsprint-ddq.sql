@@ -199,3 +199,22 @@ INSERT INTO Restaurants
     ('Fiji', '928 Bogus St', 'Suite 98', 'Los Angeles', 'CA', 98765)
 ;
 /* -- */
+
+/* -- */
+INSERT INTO Products (productName, availability, price, restaurantID)
+  VALUES
+    ('Arizona Burrito', 1, 8.99,
+      ((select restaurantID from Restaurants where restaurantName = 'Abelardos'))
+    ),
+    ('California Roll', 1, 18.45,
+      ((select restaurantID from Restaurants where restaurantName = 'Fiji'))
+    )
+;
+/* -- */
+
+/* -- */
+select * from Drivers;
+select * from Customers;
+select * from Restaurants;
+select * from Products;
+/* -- */
