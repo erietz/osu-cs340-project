@@ -5,6 +5,8 @@ import CustomerPage from './pages/CustomerPage.js';
 import DriverPage from './pages/DriverPage.js';
 import OrderPage from './pages/OrderPage';
 import ProductPage from './pages/ProductPage';
+import RestaurantCustomersPage from './pages/RestaurantCustomers';
+import OrderProductsPage from './pages/OrderProductsPage';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 function App() {
@@ -34,6 +36,14 @@ function App() {
 
             <Route path="/products" exact>
                 <ProductPage/>
+            </Route>
+
+            <Route path="/orderproducts" exact>
+                <OrderProductsPage/>
+            </Route>
+
+            <Route path="/restaurantcustomers" exact>
+                <RestaurantCustomersPage/>
             </Route>
 
         </Router>

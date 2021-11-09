@@ -117,3 +117,40 @@ input {
   padding: 5px;
   margin: 5px;
 }
+
+
+button {
+  background-color: #A2708E;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+button#AddAnother{
+  background-color: #A2708E;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.container {
+  display: flex ;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2em;
+}
+
+.containerblock {
+    max-width: 350px ;
+    text-align: center ;
+    padding-left: 10px ;
+    padding-right: 10px ;
+}

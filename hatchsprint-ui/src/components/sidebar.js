@@ -20,6 +20,12 @@ export default function SideBar() {
                 <li>
                     <Link to="/products">Products</Link>
                 </li>
+                <li>
+                    <Link to="/orderproducts">OrderProducts</Link>
+                </li>
+                <li>
+                    <Link to="/restaurantcustomers">RestaurantCustomers</Link>
+                </li>
             </ul>
         </div>
     )
