@@ -4,10 +4,21 @@
  * Description : Create all of the tables for the HatchSprint database
  */
 
+-------------------------------------------------------------------------------
+-- Create all of the tables
+-------------------------------------------------------------------------------
+
+-- We must delete the intersection tables before we can delete the parent
+-- tables that are referenced by them.
+DROP TABLE IF EXISTS `OrderProducts`;
+DROP TABLE IF EXISTS `RestaurantCustomers`;
+DROP TABLE IF EXISTS `Orders`;
+DROP TABLE IF EXISTS `Products`;
 
 /* -- */
 -- Table `Customers`
-CREATE TABLE IF NOT EXISTS `Customers` (
+DROP TABLE IF EXISTS `Customers`;
+CREATE TABLE `Customers` (
   `customerID` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `firstName` VARCHAR(16) NOT NULL,
   `lastName` VARCHAR(16) NOT NULL,
@@ -26,7 +37,8 @@ CREATE TABLE IF NOT EXISTS `Customers` (
 
 /* -- */
 -- Table `Restaurants`
-CREATE TABLE IF NOT EXISTS `Restaurants` (
+DROP TABLE IF EXISTS `Restaurants`;
+CREATE TABLE `Restaurants` (
   `restaurantID` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `restaurantName` VARCHAR(45) NOT NULL,
   `streetAddress1` VARCHAR(45) NOT NULL,
@@ -40,18 +52,17 @@ CREATE TABLE IF NOT EXISTS `Restaurants` (
 
 /* -- */
 -- Intersection Table `RestaurantCustomers`
-CREATE TABLE IF NOT EXISTS `RestaurantCustomers` (
+DROP TABLE IF EXISTS `RestaurantCustomers`;
+CREATE TABLE `RestaurantCustomers` (
   `customerID` INT NOT NULL,
   `restaurantID` INT NOT NULL,
   PRIMARY KEY (`customerID`, `restaurantID`),
   FOREIGN KEY fk_customerID(`customerID`)
     REFERENCES Customers(`customerID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE,
   FOREIGN KEY fk_restaurantID(`restaurantID`)
     REFERENCES Restaurants(`restaurantID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
 );
 /* -- */
 
@@ -59,7 +70,8 @@ CREATE TABLE IF NOT EXISTS `RestaurantCustomers` (
 
 /* -- */
 -- Table `Drivers`
-CREATE TABLE IF NOT EXISTS `Drivers` (
+DROP TABLE IF EXISTS `Drivers`;
+CREATE TABLE `Drivers` (
   `driverID` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `firstName` VARCHAR(45) NOT NULL,
   `lastName` VARCHAR(45) NOT NULL,
@@ -83,7 +95,8 @@ CREATE TABLE IF NOT EXISTS `Products` (
 
 /* -- */
 -- Table `Orders`
-CREATE TABLE IF NOT EXISTS `Orders` (
+DROP TABLE IF EXISTS `Orders`;
+CREATE TABLE `Orders` (
   `orderID` INT NOT NULL AUTO_INCREMENT UNIQUE,
   `preTax` FLOAT NOT NULL,
   `tax` FLOAT NOT NULL,
@@ -99,18 +112,17 @@ CREATE TABLE IF NOT EXISTS `Orders` (
 /* -- */
 
 /* -- */
-CREATE TABLE IF NOT EXISTS `OrderProducts` (
+DROP TABLE IF EXISTS `OrderProducts`;
+CREATE TABLE `OrderProducts` (
   `orderID` INT NOT NULL,
   `productID` INT NOT NULL,
   PRIMARY KEY (`orderID`, `productID`),
   FOREIGN KEY fk_productID (`productID`)
     REFERENCES Products(`productID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE,
   FOREIGN KEY fk_orderID (`orderID`)
     REFERENCES Orders(`orderID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
 );
 /* -- */
 
@@ -121,8 +133,7 @@ ALTER TABLE `Products`
   ADD CONSTRAINT `restaurantID`
     FOREIGN KEY (`restaurantID`)
     REFERENCES `Restaurants` (`restaurantID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
 ;
 /* -- */
 
@@ -132,8 +143,7 @@ ALTER TABLE `Orders`
   ADD CONSTRAINT `driverID`
     FOREIGN KEY (`driverID`)
     REFERENCES `Drivers` (`driverID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
 ;
 /* -- */
 
@@ -143,8 +153,7 @@ ALTER TABLE `Orders`
   ADD CONSTRAINT `customerID`
     FOREIGN KEY (`customerID`)
     REFERENCES `Customers` (`customerID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
 ;
 /* -- */
 
@@ -154,7 +163,12 @@ ALTER TABLE `Orders`
   ADD CONSTRAINT `productID`
     FOREIGN KEY (`productID`)
     REFERENCES `Products` (`productID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
 ;
 /* -- */
+
+-------------------------------------------------------------------------------
+-- Add Sample data
+-------------------------------------------------------------------------------
+
+/* INSERT INTO */ 
