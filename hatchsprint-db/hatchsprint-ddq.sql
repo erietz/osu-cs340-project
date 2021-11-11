@@ -175,7 +175,10 @@ ALTER TABLE `Orders`
 INSERT INTO Drivers (firstName, lastName, licenseNumber)
 VALUES
   ('Ethan', 'Rietz', '1235ABC'),
-  ('Jason', 'Marsh', '456CDE')
+  ('Jason', 'Marsh', '456CDE'),
+  ('Angela', 'Owens', '789FGH'),
+  ('Jason', 'Marsh', '012IJK')
+  ('Jason', 'Marsh', '345LMN')
 ;
 /* -- */
 
@@ -186,8 +189,11 @@ INSERT INTO Customers
   VALUES
     ('John', 'Doe', 'john@doe.com', 'password!', '123 First St', 'Apt 2', 'Foobar',
       'IA', 50189, 5551234567),
-    ('Jane', 'Thorton', 'jane@thorton.me', 'secret', '321 Second Ave', 'Suite
+    ('Jane', 'Thorton', 'jane@thorton.me', 'secr,et', '321 Second Ave', 'Suite
       2', 'Spam', 'KA', 78303, 5559876543)
+    ('Lindsey', 'Jones', 'lindsey@jones.me', 'pw123456', '567 Third Ave', '', 'Providence', 'RI', 02860, 5559352362),
+    ('James', 'Clark', 'james@clark.me', 'password134', '4 Fourth Ave', '', 'Providence', 'RI', 02860, 5559355262),
+    ('Tim', 'Greenberg', 'tim@greenberg.me', 'pw908798', '5 Fifth Ave', '', 'Providence', 'RI', 02860, 55593915043),
 ;
 /* -- */
 
@@ -197,6 +203,9 @@ INSERT INTO Restaurants
   VALUES
     ('Abelardos', '287 Center St', 'Unit 32', 'Omaha', 'NE', 68190),
     ('Fiji', '928 Bogus St', 'Suite 98', 'Los Angeles', 'CA', 98765)
+    ("Sal's", '123 Bogus St', '', 'Providence', 'RI', 02860)
+    ("Sage", '425 Bogus St', '', 'Providence', 'RI', 02860)
+    ("Newberry", '3 1st St', '', 'Providence', 'RI', 02860)
 ;
 /* -- */
 
@@ -208,6 +217,15 @@ INSERT INTO Products (productName, availability, price, restaurantID)
     ),
     ('California Roll', 1, 18.45,
       ((select restaurantID from Restaurants where restaurantName = 'Fiji'))
+    ),
+        ('Hamburger', 1, 12.00,
+      ((select restaurantID from Restaurants where restaurantName = "Sal's"))
+    ),
+        ('Pad Thai', 1, 11.25,
+      ((select restaurantID from Restaurants where restaurantName = 'Sage'))
+    ),
+        ('Chicken Wings', 1, 15.00,
+      ((select restaurantID from Restaurants where restaurantName = 'Newberry'))
     )
 ;
 /* -- */
@@ -221,7 +239,13 @@ INSERT INTO Orders
       (select customerID from Customers where firstName = 'John' and lastName = 'Doe'),
       (select driverID from Drivers where firstName = 'Ethan' and lastName = 'Rietz'),
       (select restaurantID from Restaurants where restaurantName = 'Abelardos')
+    ),
+    (15.00, 1.00, 3.00, 19.00, '2021-11-10', '8:00:00',
+      (select customerID from Customers where firstName = 'Jane' and lastName = 'Reynolds'),
+      (select driverID from Drivers where firstName = 'Jason' and lastName = 'Marsh'),
+      (select restaurantID from Restaurants where restaurantName = 'Newberry')
     )
+    
 ;
 /* -- */
 
