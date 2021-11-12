@@ -177,8 +177,8 @@ VALUES
   ('Ethan', 'Rietz', '1235ABC'),
   ('Jason', 'Marsh', '456CDE'),
   ('Angela', 'Owens', '789FGH'),
-  ('Jason', 'Marsh', '012IJK')
-  ('Jason', 'Marsh', '345LMN')
+  ('Tim', 'Smith', '012IJK')
+  ('Dana', 'Harmann', '345LMN')
 ;
 /* -- */
 
