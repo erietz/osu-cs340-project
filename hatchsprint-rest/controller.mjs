@@ -1,7 +1,7 @@
 import express from "express";
 import * as db from "./model.mjs";
 
-const PORT = 9999;
+const PORT = 9997;
 const app = express();
 app.use(express.json());
 
