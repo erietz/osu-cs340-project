@@ -42,6 +42,10 @@ th {
   color: white;
 }
 
+table {
+  overflow: scroll;
+}
+
 table.center {
   margin-left:auto; 
   margin-right:auto;

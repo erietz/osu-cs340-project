@@ -1,7 +1,17 @@
+import { useState, useEffect } from "react";
 import SideBar from '../components/Sidebar.js';
 import CreateRestaurant from '../components/CreateRestaurantForm.js';
+import RestaurantTable from '../components/RestaurantTable.js';
 
 export default function RestaurantPage() {
+    const [restaurants, setRestaurants] = useState([]);
+    useEffect(() => {
+        fetch("/restaurants")
+            .then(data => data.json())
+            .then(data => setRestaurants(data))
+            .catch(err => console.error(err));
+    }, []);
+
     return (
         <>
             <SideBar/>
@@ -12,32 +22,7 @@ export default function RestaurantPage() {
             <CreateRestaurant/>
             <br/>
 
-            <table id="restaurants" class="center">
-            <thead>
-                <tr>
-                    <td>restaurantID</td>
-                    <td>restaurantName</td>
-                    <td>streetAddressLine1</td>
-                    <td>streetAddressLine2</td>
-                    <td>city</td>
-                    <td>state</td>
-                    <td>zip</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
-                </tr>
-            </thead>
-            <tr>
-                <td>1</td>
-                <td>Abelardos</td>
-                <td>123 Foo Street</td>
-                <td>Suite 21</td>
-                <td>Fargo</td>
-                <td>North Dakota</td>
-                <td>12345</td>
-                <td>Edit</td>
-                <td>Delete</td>
-            </tr>
-        </table>
+            <RestaurantTable restaurants={restaurants}/>
         </>
     )
 }
