@@ -2,10 +2,10 @@
   "name": "hatchsprint-rest",
   "version": "1.0.0",
   "description": "REST API",
-  "main": "app.mjs",
+  "main": "controller.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.mjs"
+    "start": "nodemon controller.mjs"
   },
   "author": "Ethan Rietz",
   "license": "ISC",

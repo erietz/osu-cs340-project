@@ -8,12 +8,16 @@
 -- Create all of the tables
 -------------------------------------------------------------------------------
 
+/* -- */
 -- We must delete the intersection tables before we can delete the parent
 -- tables that are referenced by them.
 DROP TABLE IF EXISTS `OrderProducts`;
 DROP TABLE IF EXISTS `RestaurantCustomers`;
 DROP TABLE IF EXISTS `Orders`;
 DROP TABLE IF EXISTS `Products`;
+DROP TABLE IF EXISTS `Customers`;
+DROP TABLE IF EXISTS `Restaurants`;
+DROP TABLE IF EXISTS `Drivers`;
 
 /* -- */
 -- Table `Customers`
@@ -112,6 +116,46 @@ CREATE TABLE `Orders` (
 /* -- */
 
 /* -- */
+-- Table `Products` Foreign Keys
+ALTER TABLE `Products`
+  ADD CONSTRAINT `restaurantID_products`
+    FOREIGN KEY (`restaurantID`)
+    REFERENCES `Restaurants` (`restaurantID`)
+    ON DELETE CASCADE
+;
+/* -- */
+
+/* -- */
+-- Table Orders Foreign Keys
+ALTER TABLE `Orders`
+  ADD CONSTRAINT `driverID_orders`
+    FOREIGN KEY (`driverID`)
+    REFERENCES `Drivers` (`driverID`)
+    ON DELETE CASCADE
+;
+/* -- */
+
+/* -- */
+-- Table Orders Foreign Keys
+ALTER TABLE `Orders`
+  ADD CONSTRAINT `customerID_orders`
+    FOREIGN KEY (`customerID`)
+    REFERENCES `Customers` (`customerID`)
+    ON DELETE CASCADE
+;
+/* -- */
+
+/* -- */
+-- Table Orders Foreign Keys
+ALTER TABLE `Orders`
+  ADD CONSTRAINT `restaurantID_orders`
+    FOREIGN KEY (`restaurantID`)
+    REFERENCES `Restaurants` (`restaurantID`)
+    ON DELETE CASCADE
+;
+/* -- */
+
+/* -- */
 DROP TABLE IF EXISTS `OrderProducts`;
 CREATE TABLE `OrderProducts` (
   `orderID` INT NOT NULL,
@@ -127,49 +171,9 @@ CREATE TABLE `OrderProducts` (
 /* -- */
 
 
-/* -- */
--- Table `Products` Foreign Keys
-ALTER TABLE `Products`
-  ADD CONSTRAINT `restaurantID`
-    FOREIGN KEY (`restaurantID`)
-    REFERENCES `Restaurants` (`restaurantID`)
-    ON DELETE CASCADE
-;
-/* -- */
-
-/* -- */
--- Table Orders Foreign Keys
-ALTER TABLE `Orders`
-  ADD CONSTRAINT `driverID`
-    FOREIGN KEY (`driverID`)
-    REFERENCES `Drivers` (`driverID`)
-    ON DELETE CASCADE
-;
-/* -- */
-
-/* -- */
--- Table Orders Foreign Keys
-ALTER TABLE `Orders`
-  ADD CONSTRAINT `customerID`
-    FOREIGN KEY (`customerID`)
-    REFERENCES `Customers` (`customerID`)
-    ON DELETE CASCADE
-;
-/* -- */
-
-/* -- */
--- Table Orders Foreign Keys
-ALTER TABLE `Orders`
-  ADD CONSTRAINT `restaurantID`
-    FOREIGN KEY (`restaurantID`)
-    REFERENCES `Restaurants` (`restaurantID`)
-    ON DELETE CASCADE
-;
-/* -- */
-
--------------------------------------------------------------------------------
--- Add Sample data
--------------------------------------------------------------------------------
+/* ------------------------------------------------------------------------------- */
+/* -- Add Sample data */
+/* ------------------------------------------------------------------------------- */
 
 /* -- */
 INSERT INTO Drivers (firstName, lastName, licenseNumber)
@@ -177,7 +181,7 @@ VALUES
   ('Ethan', 'Rietz', '1235ABC'),
   ('Jason', 'Marsh', '456CDE'),
   ('Angela', 'Owens', '789FGH'),
-  ('Tim', 'Smith', '012IJK')
+  ('Tim', 'Smith', '012IJK'),
   ('Dana', 'Harmann', '345LMN')
 ;
 /* -- */
@@ -190,10 +194,10 @@ INSERT INTO Customers
     ('John', 'Doe', 'john@doe.com', 'password!', '123 First St', 'Apt 2', 'Foobar',
       'IA', 50189, 5551234567),
     ('Jane', 'Thorton', 'jane@thorton.me', 'secr,et', '321 Second Ave', 'Suite
-      2', 'Spam', 'KA', 78303, 5559876543)
+      2', 'Spam', 'KA', 78303, 5559876543),
     ('Lindsey', 'Jones', 'lindsey@jones.me', 'pw123456', '567 Third Ave', '', 'Providence', 'RI', 02860, 5559352362),
     ('James', 'Clark', 'james@clark.me', 'password134', '4 Fourth Ave', '', 'Providence', 'RI', 02860, 5559355262),
-    ('Tim', 'Greenberg', 'tim@greenberg.me', 'pw908798', '5 Fifth Ave', '', 'Providence', 'RI', 02860, 55593915043),
+    ('Tim', 'Greenberg', 'tim@greenberg.me', 'pw908798', '5 Fifth Ave', '', 'Providence', 'RI', 02860, 55593915043)
 ;
 /* -- */
 
@@ -202,9 +206,9 @@ INSERT INTO Restaurants
   (restaurantName, streetAddress1, streetAddress2, city, state, zip)
   VALUES
     ('Abelardos', '287 Center St', 'Unit 32', 'Omaha', 'NE', 68190),
-    ('Fiji', '928 Bogus St', 'Suite 98', 'Los Angeles', 'CA', 98765)
-    ("Sal's", '123 Bogus St', '', 'Providence', 'RI', 02860)
-    ("Sage", '425 Bogus St', '', 'Providence', 'RI', 02860)
+    ('Fiji', '928 Bogus St', 'Suite 98', 'Los Angeles', 'CA', 98765),
+    ("Sal's", '123 Bogus St', '', 'Providence', 'RI', 02860),
+    ("Sage", '425 Bogus St', '', 'Providence', 'RI', 02860),
     ("Newberry", '3 1st St', '', 'Providence', 'RI', 02860)
 ;
 /* -- */
@@ -239,12 +243,12 @@ INSERT INTO Orders
       (select customerID from Customers where firstName = 'John' and lastName = 'Doe'),
       (select driverID from Drivers where firstName = 'Ethan' and lastName = 'Rietz'),
       (select restaurantID from Restaurants where restaurantName = 'Abelardos')
-    ),
-    (15.00, 1.00, 3.00, 19.00, '2021-11-10', '8:00:00',
-      (select customerID from Customers where firstName = 'Jane' and lastName = 'Reynolds'),
-      (select driverID from Drivers where firstName = 'Jason' and lastName = 'Marsh'),
-      (select restaurantID from Restaurants where restaurantName = 'Newberry')
     )
+    /* (15.00, 1.00, 3.00, 19.00, '2021-11-10', '8:00:00', */
+    /*   (select customerID from Customers where firstName = 'Jane' and lastName = 'Reynolds'), */
+    /*   (select driverID from Drivers where firstName = 'Jason' and lastName = 'Marsh'), */
+    /*   (select restaurantID from Restaurants where restaurantName = 'Newberry') */
+    /* ) */
     
 ;
 /* -- */
