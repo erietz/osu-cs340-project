@@ -1,4 +1,4 @@
-import SideBar from '../components/sidebar.js';
+import SideBar from '../components/Sidebar.js';
 import CreateDriver from '../components/CreateDriverForm.js';
 
 export default function DriverPage() {

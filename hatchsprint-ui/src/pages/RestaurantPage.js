@@ -1,4 +1,4 @@
-import SideBar from '../components/sidebar.js';
+import SideBar from '../components/Sidebar.js';
 import CreateRestaurant from '../components/CreateRestaurantForm.js';
 
 export default function RestaurantPage() {

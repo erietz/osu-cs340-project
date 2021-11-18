@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import SideBar from '../components/sidebar.js';
+import SideBar from '../components/Sidebar.js';
 
 export default function HomePage() {
     return (

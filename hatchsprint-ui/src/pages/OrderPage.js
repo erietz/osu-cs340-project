@@ -1,4 +1,4 @@
-import SideBar from '../components/sidebar.js';
+import SideBar from '../components/Sidebar.js';
 import OrderForm from '../components/CreateOrderForm.js';
 import AddAnother from '../components/AddAnotherProduct.js';
 

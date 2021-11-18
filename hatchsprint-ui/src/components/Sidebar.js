@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function SideBar() {
     return (
-        <div class="sidebar">
+        <div className="sidebar">
             <header><Link to="/">HatchSprint</Link></header>
             <ul>
                 <li>

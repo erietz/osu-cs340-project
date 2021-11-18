@@ -1,4 +1,4 @@
-import SideBar from '../components/sidebar.js';
+import SideBar from '../components/Sidebar.js';
 import CreateProduct from '../components/CreateProductForm.js';
 
 export default function ProductPage() {

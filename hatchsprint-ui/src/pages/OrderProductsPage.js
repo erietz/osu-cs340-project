@@ -1,4 +1,4 @@
-import SideBar from '../components/sidebar.js';
+import SideBar from '../components/Sidebar.js';
 import SearchOrderProducts from '../components/SearchOrderProducts.js';
 
 export default function OrderProductsPage() {
