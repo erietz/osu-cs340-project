@@ -5,8 +5,48 @@ const PORT = 9124;
 const app = express();
 app.use(express.json());
 
-app.get("/customers", (req, res) => {
-    db.pool.query("SELECT * FROM Customers;", (error, results, fields) => {
+app.get("/customers", (_, res) => {
+    db.pool.query("SELECT * FROM Customers;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+app.get("/restaurants", (_, res) => {
+    db.pool.query("SELECT * FROM Restaurants;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+app.get("/orders", (_, res) => {
+    db.pool.query("SELECT * FROM Orders;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+app.get("/products", (_, res) => {
+    db.pool.query("SELECT * FROM Products;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+app.get("/drivers", (_, res) => {
+    db.pool.query("SELECT * FROM Drivers;", (error, results, _) => {
         if (error) {
             console.error(error);
         } else {
