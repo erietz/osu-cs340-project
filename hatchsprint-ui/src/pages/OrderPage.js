@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import SideBar from '../components/Sidebar.js';
 import OrderForm from '../components/CreateOrderForm.js';
-import AddAnother from '../components/AddAnotherProduct.js';
 import OrderTable from '../components/OrderTable.js';
 
 export default function OrderPage() {
