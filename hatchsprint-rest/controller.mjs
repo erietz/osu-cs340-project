@@ -10,6 +10,7 @@ app.get("/customers", (_, res) => {
         if (error) {
             console.error(error);
         } else {
+            console.log(results);
             res.json(results);
         }
     });
