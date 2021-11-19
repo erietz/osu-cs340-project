@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import * as db from "./model.mjs";
 
 const PORT = 9997;
@@ -12,8 +12,9 @@ app.get("/customers", (_, res) => {
     db.pool.query("SELECT * FROM Customers;", (error, results, _) => {
         if (error) {
             console.error(error);
+            response.status(400).json(error);
         } else {
-            res.json(results);
+            res.status(200).json(results);
         }
     });
 });
@@ -65,8 +66,9 @@ app.get("/restaurants", (_, res) => {
     db.pool.query("SELECT * FROM Restaurants;", (error, results, _) => {
         if (error) {
             console.error(error);
+            res.status(400).json(error);
         } else {
-            res.json(results);
+            res.status(200).json(results);
         }
     });
 });
@@ -78,6 +80,7 @@ app.get("/orders", (_, res) => {
     db.pool.query("SELECT * FROM Orders;", (error, results, _) => {
         if (error) {
             console.error(error);
+            res.status(400).json(error);
         } else {
             res.json(results);
         }
@@ -91,8 +94,9 @@ app.get("/products", (_, res) => {
     db.pool.query("SELECT * FROM Products;", (error, results, _) => {
         if (error) {
             console.error(error);
+            res.status(400).json(error);
         } else {
-            res.json(results);
+            res.status(200).json(results);
         }
     });
 });
@@ -131,7 +135,7 @@ app.get("/drivers", (_, res) => {
         if (error) {
             console.error(error);
         } else {
-            res.json(results);
+            res.status(200).json(results);
         }
     });
 });
@@ -144,8 +148,9 @@ app.post("/driver", (req, res) => {
         (error, results, fields) => {
             if (error) {
                 console.error(error);
+                res.status(400).json(error);
             } else {
-                res.status(200).send("Driver Created")
+                res.status(201).json({ status: "Driver Created" })
             }
         });
 });
@@ -157,8 +162,9 @@ app.get("/orderproducts", (_, res) => {
     db.pool.query("SELECT * FROM OrderProducts;", (error, results, _) => {
         if (error) {
             console.error(error);
+            res.status(400).json(error);
         } else {
-            res.json(results);
+            res.status(200).json(results);
         }
     });
 });
@@ -170,8 +176,9 @@ app.get("/restaurantcustomers", (_, res) => {
     db.pool.query("SELECT * FROM RestaurantCustomers;", (error, results, _) => {
         if (error) {
             console.error(error);
+            res.status(400).json(error);
         } else {
-            res.json(results);
+            res.status(200).json(results);
         }
     });
 });
