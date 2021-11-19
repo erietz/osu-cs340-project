@@ -48,7 +48,7 @@ app.post("/customer", (req, res) => {
             zip,
             phone
         ],
-        (error, _, _) => {
+        (error, results, fields) => {
             if (error) {
                 console.error(error);
                 res.status(400).json(error);
@@ -98,15 +98,27 @@ app.get("/products", (_, res) => {
 });
 
 app.post("/product", (req, res) => {
-    const body = req.body;
+    const {
+        name,
+        available,
+        price,
+        restid
+    } = req.body
     db.pool.query(
-        `INSERT INTO Products (productName, availability, price, restaurantID)\
-            VALUES ("${body.name}", "${body.available}", "${body.price}", "${body.restid}");`,
+        "INSERT INTO Products (productName, availability, price, restaurantID)\
+            VALUES (?, ?, ?, ?);",
+            [
+                name,
+                available,
+                price,
+                restid
+            ],
         (error, results, fields) => {
             if (error) {
                 console.error(error);
+                res.status(400).json(error);
             } else {
-                res.status(200).send("Product Created")
+                res.status(201).json({ status: "Product Created" })
             }
         });
 });
