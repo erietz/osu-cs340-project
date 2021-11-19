@@ -13,7 +13,7 @@ function DriverRow({ driver }) {
 
 export default function DriverTable({ drivers }) {
     return (
-        <table id="drivers" class="center">
+        <table id="drivers" className="center">
             <thead>
                 <tr>
                     <td>driverID</td>

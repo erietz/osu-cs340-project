@@ -72,6 +72,19 @@ app.get("/drivers", (_, res) => {
     });
 });
 
+app.post("/driver", (req, res) => {
+    const body = req.body;
+    db.pool.query(
+        `INSERT INTO Drivers (firstName, lastName, licenseNumber) VALUES ("${body.fname}", "${body.lname}", "${body.license}");`,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+            } else {
+                res.status(200).send("Driver Created")
+            }
+        });
+});
+
 //------------------------------------------------------------------------------
 // OrderProducts
 //------------------------------------------------------------------------------
