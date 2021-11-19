@@ -8,8 +8,8 @@ function RestaurantRow({ restaurant }) {
             <td>{restaurant.city}</td>
             <td>{restaurant.state}</td>
             <td>{restaurant.zip}</td>
-            <td>{restaurant.Edit}</td>
-            <td>{restaurant.Delete}</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
     )
 }
@@ -19,13 +19,13 @@ export default function RestaurantTable({ restaurants }) {
         <table id="restaurant" class="center">
             <thead>
                 <tr>
-                    <td>1</td>
-                    <td>Abelardos</td>
-                    <td>123 Foo Street</td>
-                    <td>Suite 21</td>
-                    <td>Fargo</td>
-                    <td>North Dakota</td>
-                    <td>12345</td>
+                    <td>restaurantID</td>
+                    <td>Restaurant Name</td>
+                    <td>Street Address1</td>
+                    <td>Street Address2</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Zip</td>
                     <td>Edit</td>
                     <td>Delete</td>
                 </tr>

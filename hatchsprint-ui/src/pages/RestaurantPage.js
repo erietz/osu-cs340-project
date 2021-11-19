@@ -22,7 +22,9 @@ export default function RestaurantPage() {
             <CreateRestaurant/>
             <br/>
 
-            <RestaurantTable restaurants={restaurants}/>
+            <div className="table-container">
+                <RestaurantTable restaurants={restaurants}/>
+            </div>
         </>
     )
 }

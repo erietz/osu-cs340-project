@@ -19,7 +19,9 @@ export default function ProductPage() {
             <h1>Manage Products</h1>
 
             <CreateProduct/>
-            <ProductTable products={products}/>
+            <div className="table-container">
+                <ProductTable products={products}/>
+            </div>
         </>
     )
 }

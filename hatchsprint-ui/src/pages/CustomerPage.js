@@ -21,7 +21,9 @@ export default function CustomerPage() {
             <h1>Manage Customers</h1>
 
             <CustomerForm/>
-            <CustomerTable customers={customers}/>
+            <div className="table-container">
+                <CustomerTable customers={customers}/>
+            </div>
 
         </>
     )

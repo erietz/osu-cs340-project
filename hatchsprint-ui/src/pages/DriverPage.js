@@ -20,7 +20,9 @@ export default function DriverPage() {
             <h1>Manage Drivers</h1>
 
             <CreateDriver/>
-            <DriverTable drivers={drivers}/>
+            <div className="table-container">
+                <DriverTable drivers={drivers}/>
+            </div>
 
         </>
     )

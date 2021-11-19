@@ -20,7 +20,9 @@ export default function OrderPage() {
             <h1>Manage Orders</h1>
             <OrderForm/>
 
-            <OrderTable orders={orders}/>
+            <div className="table-container">
+                <OrderTable orders={orders}/>
+            </div>
         </>
     )
 }

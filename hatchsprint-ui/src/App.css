@@ -1,10 +1,18 @@
+:root {
+  --background: #2b2b2b;
+  --foreground: #e6e6e6;
+  --grey: #424242;
+  --blue: #00b7ff;
+  --purple: #A2708E;
+}
+
 .App {
   text-align: center;
 }
 
 html, body {
-    background-color: #2b2b2b;
-    color: #e6e6e6;
+    background-color: var(--background);
+    color: var(--foreground);
 }
 
 body {
@@ -16,22 +24,27 @@ body {
 }
 
 a {
-  color: #00b7ff;
+  color: var(--blue);
 }
 
 a:visited {
-  color: #A2708E;
+  color: var(--purple);
 }
 
+table {
+  /* padding: 10px; */
+  margin: 10px;
+  border: 2px solid var(--blue);
+}
 
 td, th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 8px;
 }
 
 tr:nth-child(even){
-  background-color: #f2f2f2;
-  color: black;
+  background-color: var(--grey);
+  /* color: black; */
 }
 
 th {
@@ -42,8 +55,9 @@ th {
   color: white;
 }
 
-table {
-  overflow: scroll;
+.table-container {
+  width: 100%;
+  overflow-x: scroll;
 }
 
 table.center {
@@ -107,23 +121,24 @@ form {
 
 label{
     display: inline-block;
-    float: left;
+    /* float: left; */
     clear: left;
-    width: 250px;
-    text-align: right;
+    width: 200px;
+    text-align: left;
     padding: 5px;
     margin: 5px;
 }
 
 input {
-  display: inline-block;
-  float: left;
+  /* display: inline-block; */
+  /* float: left; */
   padding: 5px;
   margin: 5px;
 }
 
 
 button {
+  border-radius: 4%;
   background-color: #A2708E;
   border: none;
   color: white;
@@ -157,4 +172,12 @@ button#AddAnother{
     text-align: center ;
     padding-left: 10px ;
     padding-right: 10px ;
+}
+
+.multicolumn {
+  column-count: 2;
+  column-gap: 20px;
+  column-width: 200px;
+  width: 80%;
+  margin: auto;
 }
