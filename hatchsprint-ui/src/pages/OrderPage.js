@@ -11,6 +11,7 @@ export default function OrderPage() {
             .then(json => setOrders(json))
             .catch(err => console.error(err));
     }, [])
+
     return (
         <>
             <SideBar/>

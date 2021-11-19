@@ -57,6 +57,26 @@ app.get("/drivers", (_, res) => {
     });
 });
 
+app.get("/orderproducts", (_, res) => {
+    db.pool.query("SELECT * FROM OrderProducts;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
+app.get("/restaurantcustomers", (_, res) => {
+    db.pool.query("SELECT * FROM RestaurantCustomers;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
 });
