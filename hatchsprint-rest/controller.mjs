@@ -13,10 +13,28 @@ app.get("/customers", (_, res) => {
         if (error) {
             console.error(error);
         } else {
-            console.log(results);
             res.json(results);
         }
     });
+});
+
+app.post("/customer", (req, res) => {
+    const b = req.body;
+    db.pool.query(
+        `INSERT INTO Customers (firstName, lastName, email, password,\
+            streetAddress1, streetAddress2, city, state, zip, phoneNumber)\
+        VALUES\
+            ("${b.fname}", "${b.lname}", "${b.email}", "${b.password}",\
+            "${b.streetAddress1}", "${b.streetAddress2}", "${b.city}", "${b.state}",\
+            ${b.zip}, ${b.phone})`
+        ,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+            } else {
+                res.status(200).send("Driver Created")
+            }
+        });
 });
 
 //------------------------------------------------------------------------------
@@ -27,7 +45,6 @@ app.get("/restaurants", (_, res) => {
         if (error) {
             console.error(error);
         } else {
-            console.log(results);
             res.json(results);
         }
     });
@@ -75,7 +92,8 @@ app.get("/drivers", (_, res) => {
 app.post("/driver", (req, res) => {
     const body = req.body;
     db.pool.query(
-        `INSERT INTO Drivers (firstName, lastName, licenseNumber) VALUES ("${body.fname}", "${body.lname}", "${body.license}");`,
+        `INSERT INTO Drivers (firstName, lastName, licenseNumber)\
+            VALUES ("${body.fname}", "${body.lname}", "${body.license}");`,
         (error, results, fields) => {
             if (error) {
                 console.error(error);
