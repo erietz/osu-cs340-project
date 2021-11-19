@@ -5,6 +5,9 @@ const PORT = 9997;
 const app = express();
 app.use(express.json());
 
+//------------------------------------------------------------------------------
+// Customers
+//------------------------------------------------------------------------------
 app.get("/customers", (_, res) => {
     db.pool.query("SELECT * FROM Customers;", (error, results, _) => {
         if (error) {
@@ -16,6 +19,9 @@ app.get("/customers", (_, res) => {
     });
 });
 
+//------------------------------------------------------------------------------
+// Restaurants
+//------------------------------------------------------------------------------
 app.get("/restaurants", (_, res) => {
     db.pool.query("SELECT * FROM Restaurants;", (error, results, _) => {
         if (error) {
@@ -27,6 +33,9 @@ app.get("/restaurants", (_, res) => {
     });
 });
 
+//------------------------------------------------------------------------------
+// Orders
+//------------------------------------------------------------------------------
 app.get("/orders", (_, res) => {
     db.pool.query("SELECT * FROM Orders;", (error, results, _) => {
         if (error) {
@@ -37,6 +46,9 @@ app.get("/orders", (_, res) => {
     });
 });
 
+//------------------------------------------------------------------------------
+// Products
+//------------------------------------------------------------------------------
 app.get("/products", (_, res) => {
     db.pool.query("SELECT * FROM Products;", (error, results, _) => {
         if (error) {
@@ -47,6 +59,9 @@ app.get("/products", (_, res) => {
     });
 });
 
+//------------------------------------------------------------------------------
+// Drivers
+//------------------------------------------------------------------------------
 app.get("/drivers", (_, res) => {
     db.pool.query("SELECT * FROM Drivers;", (error, results, _) => {
         if (error) {
@@ -57,6 +72,9 @@ app.get("/drivers", (_, res) => {
     });
 });
 
+//------------------------------------------------------------------------------
+// OrderProducts
+//------------------------------------------------------------------------------
 app.get("/orderproducts", (_, res) => {
     db.pool.query("SELECT * FROM OrderProducts;", (error, results, _) => {
         if (error) {
@@ -67,6 +85,9 @@ app.get("/orderproducts", (_, res) => {
     });
 });
 
+//------------------------------------------------------------------------------
+// RestaurantCustomers
+//------------------------------------------------------------------------------
 app.get("/restaurantcustomers", (_, res) => {
     db.pool.query("SELECT * FROM RestaurantCustomers;", (error, results, _) => {
         if (error) {
