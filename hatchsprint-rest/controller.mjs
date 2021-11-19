@@ -19,20 +19,41 @@ app.get("/customers", (_, res) => {
 });
 
 app.post("/customer", (req, res) => {
-    const b = req.body;
+    const {
+        fname,
+        lname,
+        email,
+        password,
+        streetAddress1,
+        streetAddress2,
+        city,
+        state,
+        zip,
+        phone
+    } = req.body
     db.pool.query(
-        `INSERT INTO Customers (firstName, lastName, email, password,\
+        "INSERT INTO Customers (firstName, lastName, email, password,\
             streetAddress1, streetAddress2, city, state, zip, phoneNumber)\
-        VALUES\
-            ("${b.fname}", "${b.lname}", "${b.email}", "${b.password}",\
-            "${b.streetAddress1}", "${b.streetAddress2}", "${b.city}", "${b.state}",\
-            ${b.zip}, ${b.phone})`
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         ,
-        (error, results, fields) => {
+        [
+            fname,
+            lname,
+            email,
+            password,
+            streetAddress1,
+            streetAddress2,
+            city,
+            state,
+            zip,
+            phone
+        ],
+        (error, _, _) => {
             if (error) {
                 console.error(error);
+                res.status(400).json(error);
             } else {
-                res.status(200).send("Driver Created")
+                res.status(201).json({ status: "Customer Created" })
             }
         });
 });
