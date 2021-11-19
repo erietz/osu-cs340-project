@@ -1,3 +1,5 @@
+import { MdEdit, MdDelete } from "react-icons/md";
+
 function DriverRow({ driver }) {
     return (
         <tr>
@@ -5,8 +7,8 @@ function DriverRow({ driver }) {
             <td>{driver.firstName}</td>
             <td>{driver.lastName}</td>
             <td>{driver.licenseNumber}</td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><MdEdit/></td>
+            <td><MdDelete/></td>
         </tr>
     )
 }

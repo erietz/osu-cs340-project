@@ -1,3 +1,5 @@
+import { MdEdit, MdDelete } from "react-icons/md";
+
 function CustomerRow({ customer }) {
     return (
         <tr>
@@ -12,8 +14,8 @@ function CustomerRow({ customer }) {
             <td>{customer.state}</td>
             <td>{customer.zip}</td>
             <td>{customer.phoneNumber}</td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><MdEdit/></td>
+            <td><MdDelete/></td>
         </tr>
     )
 }

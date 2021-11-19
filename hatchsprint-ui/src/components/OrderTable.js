@@ -1,3 +1,5 @@
+import { MdEdit, MdDelete } from "react-icons/md";
+
 function OrderRow({ order }) {
     return (
         <tr>
@@ -11,8 +13,8 @@ function OrderRow({ order }) {
             <td>{ order.customerID }</td>
             <td>{ order.driverID }</td>
             <td>{ order.restaurantID }</td>
-            <td>Edit</td>
-            <td>Delete</td>
+            <td><MdEdit/></td>
+            <td><MdDelete/></td>
         </tr>
     )
 }
