@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import * as db from "./model.mjs";
+import * as db from "./dbConnector.mjs";
 
 const PORT = 9997;
 const app = express();
