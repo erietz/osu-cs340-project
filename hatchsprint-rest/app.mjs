@@ -1,5 +1,5 @@
 import express, { response } from "express";
-import * as db from "./dbConnector.mjs";
+import { pool } from "./dbConnector.mjs";
 
 const PORT = 9997;
 const app = express();
@@ -9,7 +9,7 @@ app.use(express.json());
 // Customers
 //------------------------------------------------------------------------------
 app.get("/customers", (_, res) => {
-    db.pool.query("SELECT * FROM Customers;", (error, results, _) => {
+    pool.query("SELECT * FROM Customers;", (error, results, _) => {
         if (error) {
             console.error(error);
             response.status(400).json(error);
@@ -32,7 +32,7 @@ app.post("/customer", (req, res) => {
         zip,
         phone
     } = req.body
-    db.pool.query(
+    pool.query(
         "INSERT INTO Customers (firstName, lastName, email, password,\
             streetAddress1, streetAddress2, city, state, zip, phoneNumber)\
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
@@ -63,7 +63,7 @@ app.post("/customer", (req, res) => {
 // Restaurants
 //------------------------------------------------------------------------------
 app.get("/restaurants", (_, res) => {
-    db.pool.query("SELECT * FROM Restaurants;", (error, results, _) => {
+    pool.query("SELECT * FROM Restaurants;", (error, results, _) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
@@ -77,7 +77,7 @@ app.get("/restaurants", (_, res) => {
 // Orders
 //------------------------------------------------------------------------------
 app.get("/orders", (_, res) => {
-    db.pool.query("SELECT * FROM Orders;", (error, results, _) => {
+    pool.query("SELECT * FROM Orders;", (error, results, _) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
@@ -91,7 +91,7 @@ app.get("/orders", (_, res) => {
 // Products
 //------------------------------------------------------------------------------
 app.get("/products", (_, res) => {
-    db.pool.query("SELECT * FROM Products;", (error, results, _) => {
+    pool.query("SELECT * FROM Products;", (error, results, _) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
@@ -108,7 +108,7 @@ app.post("/product", (req, res) => {
         price,
         restid
     } = req.body
-    db.pool.query(
+    pool.query(
         "INSERT INTO Products (productName, availability, price, restaurantID)\
             VALUES (?, ?, ?, ?);",
             [
@@ -131,7 +131,7 @@ app.post("/product", (req, res) => {
 // Drivers
 //------------------------------------------------------------------------------
 app.get("/drivers", (_, res) => {
-    db.pool.query("SELECT * FROM Drivers;", (error, results, _) => {
+    pool.query("SELECT * FROM Drivers;", (error, results, _) => {
         if (error) {
             console.error(error);
         } else {
@@ -142,7 +142,7 @@ app.get("/drivers", (_, res) => {
 
 app.post("/driver", (req, res) => {
     const body = req.body;
-    db.pool.query(
+    pool.query(
         `INSERT INTO Drivers (firstName, lastName, licenseNumber)\
             VALUES ("${body.fname}", "${body.lname}", "${body.license}");`,
         (error, results, fields) => {
@@ -159,7 +159,7 @@ app.post("/driver", (req, res) => {
 // OrderProducts
 //------------------------------------------------------------------------------
 app.get("/orderproducts", (_, res) => {
-    db.pool.query("SELECT * FROM OrderProducts;", (error, results, _) => {
+    pool.query("SELECT * FROM OrderProducts;", (error, results, _) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
@@ -173,7 +173,7 @@ app.get("/orderproducts", (_, res) => {
 // RestaurantCustomers
 //------------------------------------------------------------------------------
 app.get("/restaurantcustomers", (_, res) => {
-    db.pool.query("SELECT * FROM RestaurantCustomers;", (error, results, _) => {
+    pool.query("SELECT * FROM RestaurantCustomers;", (error, results, _) => {
         if (error) {
             console.error(error);
             res.status(400).json(error);
