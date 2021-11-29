@@ -21,7 +21,7 @@ function OrderRow({ order }) {
 
 export default function OrderTable({ orders }) {
     return (
-        <table id="orders" class="center">
+        <table id="orders" className="center">
             <thead>
                 <tr>
                     <td>orderID</td>

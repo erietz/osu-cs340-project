@@ -6,7 +6,7 @@ export default function CreateOrder() {
         <div>
             <form>
 
-                <label for="pretaxCost">Pre-Tax Cost</label>
+                <label htmlFor="pretaxCost">Pre-Tax Cost</label>
                 <input
                     type="text"
                     id="pretaxCost"
@@ -15,7 +15,7 @@ export default function CreateOrder() {
                 ></input>
                 <br/>
 
-                <label for="tax">Tax</label>
+                <label htmlFor="tax">Tax</label>
                 <input
                     type="text"
                     id="tax"
@@ -24,7 +24,7 @@ export default function CreateOrder() {
                 ></input>
                 <br/>
 
-                <label for="tip">Tip</label>
+                <label htmlFor="tip">Tip</label>
                 <input
                     type="text"
                     id="tip"
@@ -33,7 +33,7 @@ export default function CreateOrder() {
                 ></input>
                 <br/>
 
-                <label for="customerID">Customer ID</label>
+                <label htmlFor="customerID">Customer ID</label>
                 <input
                     type="text"
                     id="customerID"
@@ -42,7 +42,7 @@ export default function CreateOrder() {
                 ></input>
                 <br/>
 
-                <label for="restaurantID">Restaurant ID </label>
+                <label htmlFor="restaurantID">Restaurant ID </label>
                 <input
                     type="text"
                     id="restaurantID"
@@ -51,7 +51,7 @@ export default function CreateOrder() {
                 ></input>
                 <br/>
 
-                <label for="products">Products</label>
+                <label htmlFor="products">Products</label>
                 <input
                     type="text"
                     id="products"
@@ -60,7 +60,7 @@ export default function CreateOrder() {
                 ></input>
                 <br/>
 
-                <div class = "container">
+                <div className="multicolumn">
                     <AddAnotherProduct/>
                 </div>
 
