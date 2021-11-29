@@ -19,6 +19,7 @@ export default function CreateDriver() {
         })
 
         if (response.status === 201) {
+            alert(`Driver Created, status code = ${response.status}`);
             window.location.reload(false);
         } else {
             alert(`Failed to create driver, status code = ${response.status}`);

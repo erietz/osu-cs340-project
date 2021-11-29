@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 export default function CreateCustomer() {
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
+    const [firstName, setFname] = useState('');
+    const [lastName, setLname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [streetAddress1, setStreetAddress1] = useState('');
@@ -13,7 +13,7 @@ export default function CreateCustomer() {
     const [phone, setPhone] = useState('');
 
     const create = async () => {
-        const newCustomer = {fname, lname, email, password, streetAddress1,
+        const newCustomer = {firstName, lastName, email, password, streetAddress1,
             streetAddress2, city, state, zip, phone}
 
         fetch('/customer', {
@@ -30,21 +30,21 @@ export default function CreateCustomer() {
         <>
             <div className="multicolumn">
 
-                <label for="fname">First Name</label>
+                <label for="firstName">First Name</label>
                 <input
                     type="text"
-                    id="fname"
-                    name="fname"
+                    id="firstName"
+                    name="firstName"
                     placeholder="First Name"
                     onChange={e => setFname(e.target.value)}
                 />
                 <br/>
 
-                <label for="lname">Last Name</label>
+                <label for="lastName">Last Name</label>
                 <input
                     type="text"
-                    id="lname"
-                    name="lname"
+                    id="lastName"
+                    name="lastName"
                     placeholder = "Last Name"
                     onChange={e => setLname(e.target.value)}
                 />

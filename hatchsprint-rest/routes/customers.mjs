@@ -17,10 +17,10 @@ customers.get("/", (_, res) => {
     });
 });
 
-customers.post("/customer", (req, res) => {
+customers.post("/", (req, res) => {
     const {
-        fname,
-        lname,
+        firstName,
+        lastName,
         email,
         password,
         streetAddress1,
@@ -36,8 +36,8 @@ customers.post("/customer", (req, res) => {
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
         ,
         [
-            fname,
-            lname,
+            firstName,
+            lastName,
             email,
             password,
             streetAddress1,
