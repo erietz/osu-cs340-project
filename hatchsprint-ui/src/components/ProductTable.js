@@ -16,7 +16,7 @@ function ProductRow({ product }) {
 
 export default function ProductTable({ products }) {
     return (
-        <table id="products" class="center">
+        <table id="products" className="center">
             <thead>
                 <tr>
                     <td>productID</td>

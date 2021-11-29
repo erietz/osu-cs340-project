@@ -37,7 +37,7 @@ export default function CreateCustomer() {
         <>
             <div className="multicolumn">
 
-                <label for="firstName">First Name</label>
+                <label htmlFor="firstName">First Name</label>
                 <input
                     type="text"
                     id="firstName"
@@ -47,7 +47,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="lastName">Last Name</label>
+                <label htmlFor="lastName">Last Name</label>
                 <input
                     type="text"
                     id="lastName"
@@ -57,7 +57,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="email">Email</label>
+                <label htmlFor="email">Email</label>
                 <input
                     type="text"
                     id="email"
@@ -67,7 +67,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="password">Password</label>
+                <label htmlFor="password">Password</label>
                 <input
                     type="text"
                     id="password"
@@ -77,7 +77,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="streetAddress1">Street Address 1</label>
+                <label htmlFor="streetAddress1">Street Address 1</label>
                 <input
                     type="text"
                     id="streetAddress1"
@@ -87,7 +87,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="streetAddress2">Street Address 2</label>
+                <label htmlFor="streetAddress2">Street Address 2</label>
                 <input
                     type="text"
                     id="streetAddress2"
@@ -97,7 +97,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="city">city</label>
+                <label htmlFor="city">city</label>
                 <input
                     type="text"
                     id="city"
@@ -107,7 +107,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="state">state</label>
+                <label htmlFor="state">state</label>
                 <input
                     type="text"
                     id="state"
@@ -117,7 +117,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="zip">zip</label>
+                <label htmlFor="zip">zip</label>
                 <input
                     type="text"
                     id="zip"
@@ -127,7 +127,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
 
-                <label for="phone">Phone Number</label>
+                <label htmlFor="phone">Phone Number</label>
                 <input
                     type="text"
                     id="phone"

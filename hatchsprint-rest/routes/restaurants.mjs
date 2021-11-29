@@ -3,9 +3,6 @@ import pool from "../dbConnector.mjs";
 
 const restaurants = express.Router();
 
-//------------------------------------------------------------------------------
-// Restaurants
-//------------------------------------------------------------------------------
 restaurants.get("/", (_, res) => {
     pool.query("SELECT * FROM Restaurants;", (error, results, _) => {
         if (error) {

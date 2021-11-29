@@ -19,19 +19,19 @@ products.get("/", (_, res) => {
 
 products.post("/", (req, res) => {
     const {
-        name,
-        available,
+        productName,
+        availability,
         price,
-        restid
+        restaurantID
     } = req.body
     pool.query(
         "INSERT INTO Products (productName, availability, price, restaurantID)\
             VALUES (?, ?, ?, ?);",
             [
-                name,
-                available,
+                productName,
+                availability,
                 price,
-                restid
+                restaurantID
             ],
         (error, results, fields) => {
             if (error) {

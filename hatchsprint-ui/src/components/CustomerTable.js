@@ -22,7 +22,7 @@ function CustomerRow({ customer }) {
 
 export default function CustomerTable({ customers }) {
     return (
-        <table id="customers" class="center">
+        <table id="customers" className="center">
             <thead>
                 <tr>
                     <td>customerID</td>

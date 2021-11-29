@@ -1,42 +1,75 @@
 import { useState } from 'react';
 
 export default function CreateProduct() {
-    const [name, setName] = useState('');
-    const [available, setAvailable] = useState('');
+    const [productName, setProductName] = useState('');
+    const [availability, setAvailability] = useState('');
     const [price, setPrice] = useState('');
-    const [restid, setRestid] = useState('');
+    const [restaurantID, setRestaurantID] = useState('');
 
-    const create = async () => {
-        const newProduct = {name, available, price, restid};
-        fetch('/product', {
+    const create = async (event) => {
+        const newProduct = {productName, availability, price, restaurantID};
+
+        event.preventDefault()  // do not reload the page
+        const response = await fetch('/api/products', {
             method: 'POST',
             body: JSON.stringify(newProduct),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        // window.location.reload(false);
+
+        if (response.status === 201) {
+            alert(`Product Created, status code = ${response.status}`);
+            window.location.reload(false);
+        } else {
+            alert(`Failed to create Product, status code = ${response.status}`);
+            console.error(response.error);
+        }
     }
 
     return (
-        <>
-            <label for="name">Product Name</label>
-            <input type="text" id="name" name="name" placeholder = "Name" onChange={e => setName(e.target.value)}></input>
+        <form onSubmit={create}>
+            <label htmlFor="productName">Product Name</label>
+            <input
+                type="text"
+                id="productName"
+                name="productName"
+                placeholder="Name"
+                onChange={e => setProductName(e.target.value)}
+            ></input>
             <br/>
 
-            <label for="available">Availability</label>
-            <input type="text" id="available" name="available" placeholder = "Availability" onChange={e => setAvailable(e.target.value)}></input>
+            <label htmlFor="availability">Availability</label>
+            <input
+                type="text"
+                id="availability"
+                name="availability"
+                placeholder="Availability"
+                onChange={e => setAvailability(e.target.value)}
+            ></input>
             <br/>
 
-            <label for="price">Price</label>
-            <input type="text" id="price" name="price" placeholder = "Price" onChange={e => setPrice(e.target.value)}></input>
+            <label htmlFor="price">Price</label>
+            <input
+                type="text"
+                id="price"
+                name="price"
+                placeholder="Price"
+                onChange={e => setPrice(e.target.value)}
+            ></input>
             <br/>
 
-            <label for="restid">Restaurant ID</label>
-            <input type="text" id="restid" name="restid" placeholder = "Restaurant ID" onChange={e => setRestid(e.target.value)}></input>
+            <label htmlFor="restaurantID">Restaurant ID</label>
+            <input
+                type="text"
+                id="restaurantID"
+                name="restaurantID"
+                placeholder="Restaurant ID"
+                onChange={e => setRestaurantID(e.target.value)}
+            ></input>
             <br/>
 
             <button onClick={create}>Create</button>
-        </>
+        </form>
     )
 }
