@@ -12,7 +12,7 @@ function RestaurantCustomersRow({ rowData }) {
 
 export default function RestaurantCustomersTable({ data }) {
     return (
-        <table id="data" class="center">
+        <table id="data" className="center">
             <thead>
                 <tr>
                     <td>restaurantID</td>

@@ -6,22 +6,29 @@ export default function CreateDriver() {
     const [lname, setLname] = useState('');
     const [license, setLicense] = useState('');
 
-    const create = async () => {
+    const create = async (event) => {
         const newDriver = {fname, lname, license};
 
-        const response = await fetch('/driver', {
+        event.preventDefault()  // do not reload the page
+        const response = await fetch('/api/drivers', {
             method: 'POST',
             body: JSON.stringify(newDriver),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        window.location.reload(false);
+
+        if (response.status === 201) {
+            window.location.reload(false);
+        } else {
+            alert(`Failed to create driver, status code = ${response.status}`);
+            console.error(response.error);
+        }
     }
 
     return (
-        <>
-            <label for="fname">First Name</label>
+        <form onSubmit={create}>
+            <label htmlFor="fname">First Name</label>
             <input
                 type="text"
                 id="fname"
@@ -31,7 +38,7 @@ export default function CreateDriver() {
             />
             <br/>
 
-            <label for="lname">Last Name</label>
+            <label htmlFor="lname">Last Name</label>
             <input
                 type="text"
                 id="lname"
@@ -41,7 +48,7 @@ export default function CreateDriver() {
             />
             <br/>
 
-            <label for="license">License Number</label>
+            <label htmlFor="license">License Number</label>
             <input
                 type="text"
                 id="license"
@@ -51,7 +58,7 @@ export default function CreateDriver() {
             />
             <br/>
 
-            <button onClick={create}>Create</button>
-        </>
+            <button type="submit">Create</button>
+        </form>
     )
 }

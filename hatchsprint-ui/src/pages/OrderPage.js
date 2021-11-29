@@ -6,7 +6,7 @@ import OrderTable from '../components/OrderTable.js';
 export default function OrderPage() {
     const [orders, setOrders] = useState([]);
     useEffect( () => {
-        fetch("/orders")
+        fetch("/api/orders")
             .then(data => data.json())
             .then(json => setOrders(json))
             .catch(err => console.error(err));

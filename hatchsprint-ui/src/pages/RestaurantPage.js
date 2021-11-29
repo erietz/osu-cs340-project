@@ -6,7 +6,7 @@ import RestaurantTable from '../components/RestaurantTable.js';
 export default function RestaurantPage() {
     const [restaurants, setRestaurants] = useState([]);
     useEffect(() => {
-        fetch("/restaurants")
+        fetch("/api/restaurants")
             .then(data => data.json())
             .then(data => setRestaurants(data))
             .catch(err => console.error(err));

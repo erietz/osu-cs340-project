@@ -6,7 +6,7 @@ import ProductTable from '../components/ProductTable.js';
 export default function ProductPage() {
     const [products, setProducts] = useState([]);
     useEffect( () => {
-        fetch("/products")
+        fetch("/api/products")
             .then(data => data.json())
             .then(json => setProducts(json))
             .catch(err => console.error(err));

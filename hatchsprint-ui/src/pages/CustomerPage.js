@@ -7,7 +7,7 @@ export default function CustomerPage() {
     const [customers, setCustomers] = useState([]);
 
     const loadCustomers = async () => {
-        const response = await fetch("/customers");
+        const response = await fetch("/api/customers");
         const data = await response.json();
         setCustomers(data);
     }

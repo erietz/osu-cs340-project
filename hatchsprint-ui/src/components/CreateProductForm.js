@@ -8,14 +8,14 @@ export default function CreateProduct() {
 
     const create = async () => {
         const newProduct = {name, available, price, restid};
-        const response = await fetch('/product', {
+        fetch('/product', {
             method: 'POST',
             body: JSON.stringify(newProduct),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        window.location.reload(false);
+        // window.location.reload(false);
     }
 
     return (

@@ -6,7 +6,7 @@ import DriverTable from '../components/DriverTable.js';
 export default function DriverPage() {
     const [drivers, setDrivers] = useState([]);
     useEffect( () => {
-        fetch("/drivers")
+        fetch("/api/drivers")
             .then(data => data.json())
             .then(json => setDrivers(json))
             .catch(err => console.error(err));

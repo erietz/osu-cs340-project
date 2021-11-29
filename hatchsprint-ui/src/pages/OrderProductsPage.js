@@ -6,7 +6,7 @@ import OrderProductsTable from '../components/OrderProductsTable.js';
 export default function OrderProductsPage() {
     const [tableData, setTableData] = useState([]);
     useEffect( () => {
-        fetch("/restaurantcustomers")
+        fetch("/api/restaurantcustomers")
             .then(data => data.json())
             .then(json => setTableData(json))
             .catch(err => console.error(err));

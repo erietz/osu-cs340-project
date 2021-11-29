@@ -16,14 +16,14 @@ export default function CreateCustomer() {
         const newCustomer = {fname, lname, email, password, streetAddress1,
             streetAddress2, city, state, zip, phone}
 
-        const response = await fetch('/customer', {
+        fetch('/customer', {
             method: 'POST',
             body: JSON.stringify(newCustomer),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        window.location.reload(false);
+        // window.location.reload(false);
     }
 
     return (
