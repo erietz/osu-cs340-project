@@ -4,7 +4,8 @@ import "../App.css";
 export default function AddAnotherProduct() {
   const [counter, setCounter] = useState(0);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    event.preventDefault();
     setCounter(counter + 1);
     console.log(counter);
   };
