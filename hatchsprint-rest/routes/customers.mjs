@@ -29,7 +29,7 @@ customers.post("/", (req, res) => {
         state,
         zip,
         phone
-    } = req.body
+    } = req.body;
     pool.query(
         "INSERT INTO Customers (firstName, lastName, email, password,\
             streetAddress1, streetAddress2, city, state, zip, phoneNumber)\

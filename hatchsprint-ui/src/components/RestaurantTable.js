@@ -18,7 +18,7 @@ function RestaurantRow({ restaurant }) {
 
 export default function RestaurantTable({ restaurants }) {
     return (
-        <table id="restaurant" class="center">
+        <table id="restaurant" className="center">
             <thead>
                 <tr>
                     <td>restaurantID</td>

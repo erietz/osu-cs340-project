@@ -12,18 +12,25 @@ export default function CreateCustomer() {
     const [zip, setZip] = useState('');
     const [phone, setPhone] = useState('');
 
-    const create = async () => {
+    const create = async (event) => {
         const newCustomer = {firstName, lastName, email, password, streetAddress1,
             streetAddress2, city, state, zip, phone}
 
-        fetch('/customer', {
+        event.preventDefault()  // do not reload the page
+        const response = await fetch('/api/customer', {
             method: 'POST',
             body: JSON.stringify(newCustomer),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
-        // window.location.reload(false);
+
+        if (response.status === 201) {
+            alert(`Customer Created, status code = ${response.status}`);
+            window.location.reload(false);
+        } else {
+            alert(`Failed to create Customer, status code = ${response.status}`);
+        }
     }
 
     return (
