@@ -1,7 +1,6 @@
 import { MdEdit, MdDelete } from "react-icons/md";
-import DriverPage from "../pages/DriverPage";
 
-function DriverRow({ driver, onDelete }) {
+function DriverRow({ driver }) {
     return (
         <tr>
             <td>{driver.driverID}</td>
@@ -9,12 +8,12 @@ function DriverRow({ driver, onDelete }) {
             <td>{driver.lastName}</td>
             <td>{driver.licenseNumber}</td>
             <td><MdEdit/></td>
-            <td><MdDelete onClick={() => onDelete(driver.driverID)} /></td>
+            <td><MdDelete/></td>
         </tr>
     )
 }
 
-export default function DriverTable({ drivers, onDelete }) {
+export default function DriverTable({ drivers }) {
     return (
         <table id="drivers" className="center">
             <thead>
@@ -28,7 +27,7 @@ export default function DriverTable({ drivers, onDelete }) {
                 </tr>
             </thead>
             <tbody>
-                {drivers.map((driver, i) => <DriverRow driver={driver} onDelete = {onDelete} key={i} /> )}
+                {drivers.map((driver, i) => <DriverRow driver={driver} key={i} /> )}
             </tbody>
         </table>
     )
