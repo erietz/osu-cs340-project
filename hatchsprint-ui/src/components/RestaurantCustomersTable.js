@@ -4,7 +4,7 @@ function RestaurantCustomersRow({ rowData }) {
             <td>{rowData.restaurantID}</td>
             <td>{rowData.restaurantName}</td>
             <td>{rowData.customerID}</td>
-            <td>{rowData.customerName}</td>
+            <td>{rowData.firstName} {rowData.lastName}</td>
             <td>Remove Customer</td>
         </tr>
     )

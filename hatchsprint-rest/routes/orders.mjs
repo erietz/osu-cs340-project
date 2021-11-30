@@ -20,6 +20,23 @@ const insertIntoOrderProducts = (orderID, productID) => {
     )
 };
 
+const insertIntoRestaurantCustomers = (restaurantID, customerID) => {
+    pool.query(
+        `
+        INSERT INTO RestaurantCustomers (customerID, restaurantID)
+        VALUES (${customerID}, ${restaurantID})
+        ;
+        `.replace(/\n/g, ""),
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log(results);
+            }
+        }
+    )
+};
+
 orders.get("/", (_, res) => {
     pool.query("SELECT * FROM Orders;", (error, results, _) => {
         if (error) {
@@ -67,27 +84,13 @@ orders.post("/", (req, res) => {
             res.status(400).json(error);
         } else {
             const orderID = results.insertId;
-            console.log("orderID", orderID, "results.insertId", results.insertId);
-            console.table(results);
             productIDs.forEach((productID) => insertIntoOrderProducts(orderID, productID));
             res.status(201).json(results);
         }
     });
 
-    // pool.query(
-    //     "SELECT LAST_INSERT_ID() FROM Orders;", (error, results, fields) => {
-    //         if (error) {
-    //             console.error(error);
-    //             res.status(400).json(error);
-    //         } else {
-    //             res.status(201).json(results);
-    //         }
-    // });
-
-    // console.log("orderID", orderID);
-
-    // Insert into OrderProducts table------------------------------------------
-    // productIDs.forEach((productID) => insertIntoOrderProducts(pool, orderID, productID));
+    // Insert into RestaurantCustomers table
+    insertIntoRestaurantCustomers(restaurantID, customerID);
 
 });
 
