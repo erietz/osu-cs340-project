@@ -1,6 +1,6 @@
 import { MdEdit, MdDelete } from "react-icons/md";
 
-function RestaurantRow({ restaurant }) {
+function RestaurantRow({ restaurant, onDelete }) {
     return (
         <tr>
             <td>{restaurant.restaurantID}</td>
@@ -11,12 +11,12 @@ function RestaurantRow({ restaurant }) {
             <td>{restaurant.state}</td>
             <td>{restaurant.zip}</td>
             <td><MdEdit/></td>
-            <td><MdDelete/></td>
+            <td><MdDelete onClick={() => onDelete(restaurant.restaurantID)}/></td>
         </tr>
     )
 }
 
-export default function RestaurantTable({ restaurants }) {
+export default function RestaurantTable({ restaurants, onDelete }) {
     return (
         <table id="restaurant" className="center">
             <thead>
@@ -33,7 +33,7 @@ export default function RestaurantTable({ restaurants }) {
                 </tr>
             </thead>
             <tbody>
-                {restaurants.map((restaurant, i) => <RestaurantRow restaurant={restaurant} key={i} /> )}
+                {restaurants.map((restaurant, i) => <RestaurantRow restaurant={restaurant} onDelete = {onDelete} key={i} /> )}
             </tbody>
         </table>
     )

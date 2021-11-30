@@ -48,6 +48,20 @@ orders.get("/", (_, res) => {
     });
 });
 
+orders.delete("/", (req, res) => {
+    const body = req.body;
+    pool.query(
+        `DELETE FROM Orders WHERE orderID = "${body.orderID}"`,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json({ status: "Order Deleted" })
+            }
+        });
+});
+
 orders.post("/", (req, res) => {
 
     // Parse out the variables--------------------------------------------------

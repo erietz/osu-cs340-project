@@ -1,6 +1,6 @@
 import { MdEdit, MdDelete } from "react-icons/md";
 
-function OrderRow({ order }) {
+function OrderRow({ order, onDelete }) {
     return (
         <tr>
             <td>{ order.orderID }</td>
@@ -14,12 +14,12 @@ function OrderRow({ order }) {
             <td>{ order.driverID }</td>
             <td>{ order.restaurantID }</td>
             <td><MdEdit/></td>
-            <td><MdDelete/></td>
+            <td><MdDelete onClick={() => onDelete(order.orderID)}/></td>
         </tr>
     )
 }
 
-export default function OrderTable({ orders }) {
+export default function OrderTable({ orders, onDelete }) {
     return (
         <table id="orders" className="center">
             <thead>
@@ -39,7 +39,7 @@ export default function OrderTable({ orders }) {
                 </tr>
             </thead>
             <tbody>
-                {orders.map((order, i) => <OrderRow order={order} key={i} /> )}
+                {orders.map((order, i) => <OrderRow order={order} onDelete = {onDelete} key={i} /> )}
             </tbody>
         </table>
     )

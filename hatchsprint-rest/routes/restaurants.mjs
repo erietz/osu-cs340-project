@@ -47,4 +47,19 @@ restaurants.post("/", (req, res) => {
     });
 });
 
+restaurants.delete("/", (req, res) => {
+    const body = req.body;
+    pool.query(
+        `DELETE FROM Restaurants WHERE restaurantID = "${body.restaurantID}"`,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json({ status: "Restaurant Deleted" })
+            }
+        });
+});
+
+
 export default restaurants;
