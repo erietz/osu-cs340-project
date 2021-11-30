@@ -11,6 +11,26 @@ export default function ProductPage() {
             .then(json => setProducts(json))
             .catch(err => console.error(err));
     }, [])
+
+    const onDelete = async _id => {
+        const productID = {'productID': _id}
+        const response = await fetch(`/api/products`, { 
+            method: 'DELETE',
+            body: JSON.stringify(productID),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+         });
+        if (response.status === 200) {
+            fetch("/api/products")
+            .then(data => data.json())
+            .then(json => setProducts(json))
+            .catch(err => console.error(err));
+        } else {
+            console.error(`Failed to delete product with id = ${_id}, status code = ${response.status}`);
+        }
+    };
+
     return (
         <>
             <SideBar/>
@@ -20,7 +40,7 @@ export default function ProductPage() {
 
             <CreateProduct/>
             <div className="table-container">
-                <ProductTable products={products}/>
+                <ProductTable products={products} onDelete={onDelete}/>
             </div>
         </>
     )

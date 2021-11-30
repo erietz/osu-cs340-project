@@ -12,6 +12,26 @@ export default function RestaurantPage() {
             .catch(err => console.error(err));
     }, []);
 
+
+    const onDelete = async _id => {
+        const restaurantID = {'restaurantID': _id}
+        const response = await fetch(`/api/restaurants`, { 
+            method: 'DELETE',
+            body: JSON.stringify(restaurantID),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+         });
+        if (response.status === 200) {
+            fetch("/api/restaurants")
+            .then(data => data.json())
+            .then(json => setRestaurants(json))
+            .catch(err => console.error(err));
+        } else {
+            console.error(`Failed to delete restaurant with id = ${_id}, status code = ${response.status}`);
+        }
+    };
+
     return (
         <>
             <SideBar/>
@@ -23,7 +43,7 @@ export default function RestaurantPage() {
             <br/>
 
             <div className="table-container">
-                <RestaurantTable restaurants={restaurants}/>
+                <RestaurantTable restaurants={restaurants} onDelete = {onDelete}/>
             </div>
         </>
     )

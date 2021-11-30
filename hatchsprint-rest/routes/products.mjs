@@ -43,4 +43,18 @@ products.post("/", (req, res) => {
         });
 });
 
+products.delete("/", (req, res) => {
+    const body = req.body;
+    pool.query(
+        `DELETE FROM Products WHERE productID = "${body.productID}"`,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json({ status: "Product Deleted" })
+            }
+        });
+});
+
 export default products;

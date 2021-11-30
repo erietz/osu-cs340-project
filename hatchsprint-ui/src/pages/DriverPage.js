@@ -12,6 +12,25 @@ export default function DriverPage() {
             .catch(err => console.error(err));
     }, [])
 
+    const onDelete = async _id => {
+        const driverID = {'driverID': _id}
+        const response = await fetch(`/api/drivers`, { 
+            method: 'DELETE',
+            body: JSON.stringify(driverID),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+         });
+        if (response.status === 200) {
+            fetch("/api/drivers")
+            .then(data => data.json())
+            .then(json => setDrivers(json))
+            .catch(err => console.error(err));
+        } else {
+            console.error(`Failed to delete driver with id = ${_id}, status code = ${response.status}`);
+        }
+    };
+
     return (
         <>
             <SideBar/>
@@ -21,7 +40,7 @@ export default function DriverPage() {
 
             <CreateDriver/>
             <div className="table-container">
-                <DriverTable drivers={drivers}/>
+                <DriverTable drivers={drivers} onDelete={onDelete}/>
             </div>
 
         </>
