@@ -31,4 +31,21 @@ drivers.post("/", (req, res) => {
         });
 });
 
+
+// DELETE FROM Drivers WHERE driverID = :driverID;
+
+drivers.delete("/", (req, res) => {
+    const body = req.body;
+    pool.query(
+        `DELETE FROM Drivers WHERE driverID = "${body.driverID}"`,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json({ status: "Driver Deleted" })
+            }
+        });
+});
+
 export default drivers;
