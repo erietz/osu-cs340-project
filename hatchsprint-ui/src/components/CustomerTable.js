@@ -1,6 +1,6 @@
 import { MdEdit, MdDelete } from "react-icons/md";
 
-function CustomerRow({ customer }) {
+function CustomerRow({ customer, onDelete }) {
     return (
         <tr>
             <td>{customer.customerID}</td>
@@ -15,12 +15,12 @@ function CustomerRow({ customer }) {
             <td>{customer.zip}</td>
             <td>{customer.phoneNumber}</td>
             <td><MdEdit/></td>
-            <td><MdDelete/></td>
+            <td><MdDelete onClick={() => onDelete(customer.customerID)}/></td>
         </tr>
     )
 }
 
-export default function CustomerTable({ customers }) {
+export default function CustomerTable({ customers, onDelete }) {
     return (
         <table id="customers" className="center">
             <thead>
@@ -41,7 +41,7 @@ export default function CustomerTable({ customers }) {
                 </tr>
             </thead>
             <tbody>
-                {customers.map((customer, i) => <CustomerRow customer={customer} key={i} /> )}
+                {customers.map((customer, i) => <CustomerRow customer={customer} onDelete = {onDelete} key={i} /> )}
             </tbody>
         </table>
     )

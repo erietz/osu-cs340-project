@@ -57,4 +57,19 @@ customers.post("/", (req, res) => {
         });
 });
 
+customers.delete("/", (req, res) => {
+    const body = req.body;
+    pool.query(
+        `DELETE FROM Customers WHERE customerID = "${body.customerID}"`,
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json({ status: "Customer Deleted" })
+            }
+        });
+});
+
+
 export default customers;
