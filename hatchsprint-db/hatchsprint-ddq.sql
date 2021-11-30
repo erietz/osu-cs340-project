@@ -111,7 +111,7 @@ CREATE TABLE `Orders` (
   `driverID` INT NOT NULL,
   `customerID` INT NOT NULL,
   `restaurantID` INT NOT NULL,
-  PRIMARY KEY (`orderID`, `driverID`, `customerID`, `restaurantID`)
+  PRIMARY KEY (`orderID`)
 );
 /* -- */
 
