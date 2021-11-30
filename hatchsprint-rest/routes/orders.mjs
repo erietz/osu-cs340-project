@@ -87,7 +87,7 @@ orders.post("/", (req, res) => {
             (preTaxCost, tax, tip, totalCost, \`date\`, time, customerID,
             driverID, restaurantID)
         VALUES 
-            (${preTaxCost}, ${tax}, ${tip}, ${totalCost}, ${date}, "${time}",
+            (${preTaxCost}, ${tax}, ${tip}, ${totalCost}, "${date}", "${time}",
             ${customerID}, ${driverID}, ${restaurantID})
 
         `.replace(/\n/g, ""),
