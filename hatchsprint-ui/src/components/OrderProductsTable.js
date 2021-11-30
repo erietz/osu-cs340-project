@@ -11,7 +11,7 @@ function OrderProductsRow({ rowData }) {
 
 export default function OrderProductsTable({ data }) {
     return (
-        <table id="data" class="center">
+        <table id="data" className="center">
             <thead>
                 <tr>
                     <td>Order ID</td>

@@ -10,6 +10,9 @@ import orderproducts from "./routes/orderproducts.mjs";
 const PORT = 9997;
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}));
 
 app.use("/api/customers", customers);
 app.use("/api/drivers", drivers);
