@@ -19,7 +19,10 @@ export default function RestaurantCustomersPage() {
 
             <h1>RestaurantCustomers</h1>
             <SearchRestaurantCustomers/>
-            <RestaurantCustomersTable data={tableData}/>
+
+            <div className="table-container">
+                <RestaurantCustomersTable data={tableData}/>
+            </div>
             <br/>
         </>
     )

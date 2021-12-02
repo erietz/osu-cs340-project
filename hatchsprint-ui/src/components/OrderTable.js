@@ -4,7 +4,7 @@ function OrderRow({ order, onDelete }) {
     return (
         <tr>
             <td>{ order.orderID }</td>
-            <td>{ order.pretaxCost }</td>
+            <td>{ order.preTaxCost }</td>
             <td>{ order.tax }</td>
             <td>{ order.tip }</td>
             <td>{ order.totalCost }</td>
@@ -25,7 +25,7 @@ export default function OrderTable({ orders, onDelete }) {
             <thead>
                 <tr>
                     <td>orderID</td>
-                    <td>pretaxCost</td>
+                    <td>preTaxCost</td>
                     <td>tax</td>
                     <td>tip</td>
                     <td>totalCost</td>

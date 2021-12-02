@@ -48,7 +48,9 @@ export default function OrderProductsPage() {
 
 
             <br/>
-            <OrderProductsTable data={tableData}/>
+            <div className="table-container">
+                <OrderProductsTable data={tableData}/>
+            </div>
         </>
     )
 }
