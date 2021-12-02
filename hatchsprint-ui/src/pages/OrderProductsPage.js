@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import SideBar from '../components/Sidebar.js';
 import SearchOrderProducts from '../components/SearchOrderProducts.js';
 import OrderProductsTable from '../components/OrderProductsTable.js';
+import OrderDataList from '../components/OrderDataList.js';
 
 export default function OrderProductsPage() {
     const [tableData, setTableData] = useState([]);
+    const [orderData, setOrderData] = useState([]);
 
     useEffect( () => {
         fetch("/api/orderproducts")
@@ -25,6 +27,13 @@ export default function OrderProductsPage() {
             .catch(err => console.error(err));
     }
 
+    useEffect( () => {
+        fetch("/api/orders")
+            .then(data => data.json())
+            .then(json => setOrderData(json))
+            .catch(err => console.error(err));
+    }, [])
+
     return (
         <>
             <SideBar/>
@@ -37,11 +46,11 @@ export default function OrderProductsPage() {
                 <label htmlFor="orderID">Search OrderProducts</label>
                 <input
                     type="text"
-                    id="orderID"
-                    name="orderID"
                     placeholder="Enter order ID"
                     onChange={e => setOrderID(e.target.value)}
+                    list="orderIDs"
                 ></input>
+                <OrderDataList orderData={orderData} id="orderIDs"/>
                 <button>Search</button>
                 <br/>
             </form>
