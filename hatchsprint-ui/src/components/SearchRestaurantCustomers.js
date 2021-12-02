@@ -1,8 +1,21 @@
+import { useState } from "react";
 import RestaurantDataList from '../components/RestaurantDataList.js';
 
 export default function SearchRestaurantCustomers( {restaurantData}) {
+    const [id, setID] = useState('');
+    const search = async (event) => {
+        event.preventDefault();
+        if (id === "") {
+            window.location.reload();
+            return;
+        }
+        fetch(`/api/restaurantcustomers?restaurantID=${id}`)
+            .then(data => data.json())
+            .then(json => setID(json))
+            .catch(err => console.error(err));
+    }
     return (
-        <div>
+        <form onSubmit={search}>
             <label htmlFor="restaurantcustomers">Search RestaurantCustomers</label>
             <input
                 type="text"
@@ -12,6 +25,6 @@ export default function SearchRestaurantCustomers( {restaurantData}) {
             <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
             <button>Search</button>
             <br/>
-        </div>
+        </form>
     )
 }
