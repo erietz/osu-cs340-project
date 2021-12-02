@@ -5,10 +5,20 @@ import RestaurantCustomersTable from '../components/RestaurantCustomersTable.js'
 
 export default function RestaurantCustomersPage() {
     const [tableData, setTableData] = useState([]);
+
+    const [restaurantData, setRestaurantData] = useState([]);
+
     useEffect( () => {
         fetch("/api/restaurantcustomers")
             .then(data => data.json())
             .then(json => setTableData(json))
+            .catch(err => console.error(err));
+    }, [])
+
+    useEffect( () => {
+        fetch("/api/restaurants")
+            .then(data => data.json())
+            .then(json => setRestaurantData(json))
             .catch(err => console.error(err));
     }, [])
 
@@ -18,7 +28,7 @@ export default function RestaurantCustomersPage() {
             <br/>
 
             <h1>RestaurantCustomers</h1>
-            <SearchRestaurantCustomers/>
+            <SearchRestaurantCustomers restaurantData={restaurantData}/>
 
             <div className="table-container">
                 <RestaurantCustomersTable data={tableData}/>

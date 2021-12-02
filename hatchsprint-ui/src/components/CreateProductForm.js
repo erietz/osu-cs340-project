@@ -75,7 +75,7 @@ export default function CreateProduct() {
                 onChange={e => setRestaurantID(e.target.value)}
                 list="restaurantIDs"
             ></input>
-            <RestaurantDataList restaurantData={restaurantData}/>
+            <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
             <br/>
 
             <button onClick={create}>Create</button>
