@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function CreateProduct() {
     const [productName, setProductName] = useState('');
     const [availability, setAvailability] = useState('');
     const [price, setPrice] = useState('');
     const [restaurantID, setRestaurantID] = useState('');
+    const [restaurantData, setRestaurantData] = useState([]);
 
     const create = async (event) => {
         const newProduct = {productName, availability, price, restaurantID};
@@ -26,6 +27,13 @@ export default function CreateProduct() {
             console.error(response.error);
         }
     }
+
+    useEffect( () => {
+        fetch("/api/restaurants")
+            .then(data => data.json())
+            .then(json => setRestaurantData(json))
+            .catch(error => console.error(error));
+    }, []);
 
     return (
         <form onSubmit={create}>
@@ -62,11 +70,13 @@ export default function CreateProduct() {
             <label htmlFor="restaurantID">Restaurant ID</label>
             <input
                 type="text"
-                id="restaurantID"
-                name="restaurantID"
                 placeholder="Restaurant ID"
                 onChange={e => setRestaurantID(e.target.value)}
+                list="restaurantIDs"
             ></input>
+            <datalist id="restaurantIDs">
+                {restaurantData.map((rest, i) => <option key={i} value={rest.restaurantID}>{rest.restaurantID + " " + rest.restaurantName + " " + rest.streetAddress1}</option>)}
+            </datalist>
             <br/>
 
             <button onClick={create}>Create</button>
