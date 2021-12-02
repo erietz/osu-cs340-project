@@ -1,3 +1,5 @@
+import { MdDelete } from "react-icons/md";
+
 function RestaurantCustomersRow({ rowData }) {
     return (
         <tr>
@@ -5,7 +7,7 @@ function RestaurantCustomersRow({ rowData }) {
             <td>{rowData.restaurantName}</td>
             <td>{rowData.customerID}</td>
             <td>{rowData.firstName} {rowData.lastName}</td>
-            <td>Remove Customer</td>
+            <td><MdDelete/></td>
         </tr>
     )
 }

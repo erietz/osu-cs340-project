@@ -1,10 +1,12 @@
+import { MdDelete } from "react-icons/md";
+
 function OrderProductsRow({ rowData }) {
     return (
         <tr>
             <td>{rowData.orderID}</td>
             <td>{rowData.productID}</td>
             <td>{rowData.productName}</td>
-            <td>Remove Customer</td>
+            <td><MdDelete/></td>
         </tr>
     )
 }

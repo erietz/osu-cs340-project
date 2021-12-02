@@ -1,5 +1,4 @@
 import { MdEdit, MdDelete } from "react-icons/md";
-import DriverPage from "../pages/DriverPage";
 
 function DriverRow({ driver, onDelete }) {
     return (
