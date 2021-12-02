@@ -34,7 +34,7 @@ a:visited {
 table {
   /* padding: 10px; */
   margin: 10px;
-  border: 2px solid var(--blue);
+  width: 100%;
 }
 
 td, th {
@@ -58,6 +58,7 @@ th {
 .table-container {
   width: 100%;
   overflow-x: scroll;
+  border: 2px solid var(--blue);
 }
 
 table.center {
