@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import AddAnotherProduct from './AddAnotherProduct.js';
+import RestaurantDataList from '../components/RestaurantDataList.js';
+import CustomerDataList from '../components/CustomerDataList.js';
+import DriverDataList from '../components/DriverDataList.js';
 
 export default function CreateOrder() {
     const [preTaxCost, setPreTaxCost] = useState('');
@@ -9,6 +12,10 @@ export default function CreateOrder() {
     const [restaurantID, setRestaurantID] = useState('');
     const [driverID, setDriverID] = useState('');
     const [productIDs, setProductIDs] = useState([]);
+
+    const [restaurantData, setRestaurantData] = useState([]);
+    const [customerData, setCustomerData] = useState([]);
+    const [driverData, setDriverData] = useState([]);
 
     const create = async (event) => {
         const newOrder = {preTaxCost, tax, tip, customerID, restaurantID, driverID, productIDs}
@@ -30,6 +37,27 @@ export default function CreateOrder() {
             console.error(response.error);
         }
     }
+
+    useEffect( () => {
+        fetch("/api/restaurants")
+            .then(data => data.json())
+            .then(json => setRestaurantData(json))
+            .catch(error => console.error(error));
+    }, []);
+
+    useEffect( () => {
+        fetch("/api/customers")
+            .then(data => data.json())
+            .then(json => setCustomerData(json))
+            .catch(error => console.error(error));
+    }, []);
+
+    useEffect( () => {
+        fetch("/api/drivers")
+            .then(data => data.json())
+            .then(json => setDriverData(json))
+            .catch(error => console.error(error));
+    }, []);
 
     return (
         <form onSubmit={create}>
@@ -67,31 +95,31 @@ export default function CreateOrder() {
             <label htmlFor="customerID">Customer ID</label>
             <input
                 type="text"
-                id="customerID"
-                name="customerID"
                 placeholder="Enter Customer ID"
                 onChange={e => setCustomerID(e.target.value)}
+                list="customerIDs"
             ></input>
+            <CustomerDataList customerData={customerData} id="customerIDs"/>
             <br/>
 
             <label htmlFor="restaurantID">Restaurant ID </label>
             <input
                 type="text"
-                id="restaurantID"
-                name="restaurantID"
                 placeholder="Enter Restaurant ID"
                 onChange={e => setRestaurantID(e.target.value)}
+                list="restaurantIDs"
             ></input>
+            <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
             <br/>
 
             <label htmlFor="driverID">Driver ID </label>
             <input
                 type="text"
-                id="driverID"
-                name="driverID"
                 placeholder="Enter Driver ID"
                 onChange={e => setDriverID(e.target.value)}
+                list="driverIDs"
             ></input>
+            <DriverDataList driverData={driverData} id="driverIDs"/>
             <br/>
 
             <div className="multicolumn">

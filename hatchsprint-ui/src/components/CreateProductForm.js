@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import RestaurantDataList from '../components/RestaurantDataList.js';
 
 export default function CreateProduct() {
     const [productName, setProductName] = useState('');
@@ -74,9 +75,7 @@ export default function CreateProduct() {
                 onChange={e => setRestaurantID(e.target.value)}
                 list="restaurantIDs"
             ></input>
-            <datalist id="restaurantIDs">
-                {restaurantData.map((rest, i) => <option key={i} value={rest.restaurantID}>{rest.restaurantID + " " + rest.restaurantName + " " + rest.streetAddress1}</option>)}
-            </datalist>
+            <RestaurantDataList restaurantData={restaurantData}/>
             <br/>
 
             <button onClick={create}>Create</button>
