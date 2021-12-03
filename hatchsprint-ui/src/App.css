@@ -187,14 +187,5 @@ button#AddAnother{
 .my-popup-content {
   background-color: var(--background) !important;
   color: var(--foreground);
-}
-
-.my-popup-overlay {
-  background: #000000;
-  color: #000000;
-}
-
-.my-popup-arrow {
-  background: #000000;
-  color: #000000;
+  text-align: center;
 }

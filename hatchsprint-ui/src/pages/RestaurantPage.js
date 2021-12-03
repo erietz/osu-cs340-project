@@ -42,6 +42,7 @@ export default function RestaurantPage() {
             <h1>Manage Restaurants</h1>
 
             <Popup trigger={<button> Create New Restaurant </button>} modal className="my-popup">
+                <h2>Create a new Restaurant</h2>
                 <CreateRestaurant/>
             </Popup>
 
