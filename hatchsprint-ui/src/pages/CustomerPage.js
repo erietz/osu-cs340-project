@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import SideBar from "../components/Sidebar.js";
 import CustomerForm from "../components/CreateCustomerForm.js";
 import CustomerTable from "../components/CustomerTable.js";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function CustomerPage() {
     const [customers, setCustomers] = useState([]);
@@ -41,7 +43,14 @@ export default function CustomerPage() {
 
             <h1>Manage Customers</h1>
 
-            <CustomerForm/>
+            <Popup trigger={<button> Create New Customer </button>} modal className="my-popup">
+                <h2>Create a new Customer</h2>
+                <CustomerForm/>
+            </Popup>
+
+            <br/>
+            <br/>
+
             <div className="table-container">
                 <CustomerTable customers={customers} onDelete = {onDelete}/>
             </div>
