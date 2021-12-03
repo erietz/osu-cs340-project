@@ -16,7 +16,7 @@ html, body {
 }
 
 body {
-    max-width: 900px;
+    /* max-width: 900px; */
     /* right offset for the sidebar */
     margin: 0 0 0 200px;
     padding: 1.5em;
@@ -177,8 +177,24 @@ button#AddAnother{
 
 .multicolumn {
   column-count: 2;
-  column-gap: 20px;
+  column-gap: 0px;
+  text-align: left;
   column-width: 200px;
   width: 80%;
   margin: auto;
+}
+
+.my-popup-content {
+  background-color: var(--background) !important;
+  color: var(--foreground);
+}
+
+.my-popup-overlay {
+  background: #000000;
+  color: #000000;
+}
+
+.my-popup-arrow {
+  background: #000000;
+  color: #000000;
 }

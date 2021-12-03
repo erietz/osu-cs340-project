@@ -65,7 +65,7 @@ export default function CreateRestaurant() {
                 ></input>
                 <br/>
 
-                <label htmlFor="city">city</label>
+                <label htmlFor="city">City</label>
                 <input
                     type="text"
                     required
@@ -76,7 +76,7 @@ export default function CreateRestaurant() {
                 ></input>
                 <br/>
 
-                <label htmlFor="state">state</label>
+                <label htmlFor="state">State</label>
                 <input
                     type="text"
                     required
@@ -89,7 +89,7 @@ export default function CreateRestaurant() {
                 ></input>
                 <br/>
 
-                <label htmlFor="zip">zip</label>
+                <label htmlFor="zip">Zip Code</label>
                 <input
                     type="text"
                     required

@@ -11,20 +11,27 @@ export default function AddAnotherProduct({productIDs, setProductIDs}) {
   };
 
   return (
-    <div className="App">
+    <>
       <button id="AddAnother" onClick={handleClick}>Add Another Product</button>
+      <br/>
+      <br/>
 
-      {Array.from(Array(counter)).map((c, index) => {
-        return (
-            <input
-                key={index}
-                type="text"
-                name={`productIDs[][${index}]`}
-                onChange={e => setProductIDs([...productIDs, e.target.value])}
-                placeholder="Enter Product ID"
-            ></input>
-        );
-      })}
-    </div>
+      <div className="multicolumn">
+          {Array.from(Array(counter)).map((c, index) => (
+              <>
+                  <label> </label>
+                <input
+                    key={index}
+                    type="text"
+                    name={`productIDs[][${index}]`}
+                    onChange={e => setProductIDs([...productIDs, e.target.value])}
+                    placeholder="Enter Product ID"
+                ></input>
+                <br/>
+              </>
+            ))}
+      </div>
+
+    </>
   );
 }

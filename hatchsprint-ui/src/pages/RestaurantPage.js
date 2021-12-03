@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import SideBar from '../components/Sidebar.js';
 import CreateRestaurant from '../components/CreateRestaurantForm.js';
 import RestaurantTable from '../components/RestaurantTable.js';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function RestaurantPage() {
     const [restaurants, setRestaurants] = useState([]);
@@ -39,7 +41,11 @@ export default function RestaurantPage() {
 
             <h1>Manage Restaurants</h1>
 
-            <CreateRestaurant/>
+            <Popup trigger={<button> Create New Restaurant </button>} modal className="my-popup">
+                <CreateRestaurant/>
+            </Popup>
+
+            <br/>
             <br/>
 
             <div className="table-container">

@@ -34,7 +34,7 @@ export default function CreateCustomer() {
     }
 
     return (
-        <>
+        <form onSubmit={create}>
             <div className="multicolumn">
 
                 <label htmlFor="firstName">First Name</label>
@@ -137,7 +137,7 @@ export default function CreateCustomer() {
                 />
                 <br/>
             </div>
-            <button onClick={create}>Create</button>
-        </>
+            <button>Create</button>
+        </form>
     )
 }
