@@ -32,66 +32,71 @@ export default function CreateRestaurant() {
 
     return (
         <form onSubmit={create}>
-            <label htmlFor="restaurantName">Restaurant Name</label>
-            <input
-                type="text"
-                id="restaurantName"
-                name="restaurantName"
-                placeholder="Name"
-                onChange={e => setRestaurantName(e.target.value)}
-            ></input>
-            <br/>
+            <div className="multicolumn">
+                <label htmlFor="restaurantName">Restaurant Name</label>
+                <input
+                    type="text"
+                    id="restaurantName"
+                    name="restaurantName"
+                    placeholder="Name"
+                    onChange={e => setRestaurantName(e.target.value)}
+                ></input>
+                <br/>
 
-            <label htmlFor="streetAddress1">Street Address 1</label>
-            <input
-                type="text"
-                id="streetAddress1"
-                name="streetAddress1"
-                placeholder="Address Line 1"
-                onChange={e => setStreetAddress1(e.target.value)}
-            ></input>
-            <br/>
+                <label htmlFor="streetAddress1">Street Address 1</label>
+                <input
+                    type="text"
+                    id="streetAddress1"
+                    name="streetAddress1"
+                    placeholder="Address Line 1"
+                    onChange={e => setStreetAddress1(e.target.value)}
+                ></input>
+                <br/>
 
-            <label htmlFor="streetAddress2">Street Address 2</label>
-            <input
-                type="text"
-                id="streetAddress2"
-                name="streetAddress2"
-                placeholder="Address Line 2"
-                onChange={e => setStreetAddress2(e.target.value)}
-            ></input>
-            <br/>
+                <label htmlFor="streetAddress2">Street Address 2</label>
+                <input
+                    type="text"
+                    id="streetAddress2"
+                    name="streetAddress2"
+                    placeholder="Address Line 2"
+                    onChange={e => setStreetAddress2(e.target.value)}
+                ></input>
+                <br/>
 
-            <label htmlFor="city">city</label>
-            <input
-                type="text"
-                id="city"
-                name="city"
-                placeholder="City"
-                onChange={e => setCity(e.target.value)}
-            ></input>
-            <br/>
+                <label htmlFor="city">city</label>
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    placeholder="City"
+                    onChange={e => setCity(e.target.value)}
+                ></input>
+                <br/>
 
-            <label htmlFor="state">state</label>
-            <input
-                type="text"
-                id="state"
-                name="state"
-                placeholder="State"
-                onChange={e => setState(e.target.value)}
-            ></input>
-            <br/>
+                <label htmlFor="state">state</label>
+                <input
+                    type="text"
+                    pattern="[A-Z]{2}"
+                    title="Two digit capital abbreviation (e.g. AZ for arizona)"
+                    id="state"
+                    name="state"
+                    placeholder="State"
+                    onChange={e => setState(e.target.value)}
+                ></input>
+                <br/>
 
-            <label htmlFor="zip">zip</label>
-            <input
-                type="text"
-                id="zip"
-                name="zip"
-                placeholder="Zip"
-                onChange={e => setZip(e.target.value)}
-            ></input>
-            <br/>
-
+                <label htmlFor="zip">zip</label>
+                <input
+                    type="text"
+                    pattern="[0-9]{5}"
+                    title="five digit zip code"
+                    id="zip"
+                    name="zip"
+                    placeholder="Zip"
+                    onChange={e => setZip(e.target.value)}
+                ></input>
+                <br/>
+            </div>
             <button>Create</button>
         </form>
     )
