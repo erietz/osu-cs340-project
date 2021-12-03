@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
 export default function CreateRestaurant() {
-    const [restaurantName, setRestaurantName] = useState('');
-    const [streetAddress1, setStreetAddress1] = useState('');
-    const [streetAddress2, setStreetAddress2] = useState('');
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [zip, setZip] = useState('');
+    const [restaurantName, setRestaurantName] = useState(null);
+    const [streetAddress1, setStreetAddress1] = useState(null);
+    const [streetAddress2, setStreetAddress2] = useState(null);
+    const [city, setCity] = useState(null);
+    const [state, setState] = useState(null);
+    const [zip, setZip] = useState(null);
 
     const create = async (event) => {
         const newRestaurant = {restaurantName, streetAddress1, streetAddress2, city, state,
@@ -36,6 +36,7 @@ export default function CreateRestaurant() {
                 <label htmlFor="restaurantName">Restaurant Name</label>
                 <input
                     type="text"
+                    required
                     id="restaurantName"
                     name="restaurantName"
                     placeholder="Name"
@@ -46,6 +47,7 @@ export default function CreateRestaurant() {
                 <label htmlFor="streetAddress1">Street Address 1</label>
                 <input
                     type="text"
+                    required
                     id="streetAddress1"
                     name="streetAddress1"
                     placeholder="Address Line 1"
@@ -66,6 +68,7 @@ export default function CreateRestaurant() {
                 <label htmlFor="city">city</label>
                 <input
                     type="text"
+                    required
                     id="city"
                     name="city"
                     placeholder="City"
@@ -76,6 +79,7 @@ export default function CreateRestaurant() {
                 <label htmlFor="state">state</label>
                 <input
                     type="text"
+                    required
                     pattern="[A-Z]{2}"
                     title="Two digit capital abbreviation (e.g. AZ for arizona)"
                     id="state"
@@ -88,8 +92,9 @@ export default function CreateRestaurant() {
                 <label htmlFor="zip">zip</label>
                 <input
                     type="text"
+                    required
                     pattern="[0-9]{5}"
-                    title="five digit zip code"
+                    title="Five digit zip code (e.g. 12345)"
                     id="zip"
                     name="zip"
                     placeholder="Zip"
