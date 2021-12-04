@@ -42,8 +42,16 @@ export default function OrderPage() {
             <h1>Manage Orders</h1>
 
 
-            <Popup trigger={<button> Create New Order </button>} modal className="my-popup">
+            <Popup
+                trigger={<button> Create New Order </button>}
+                modal
+                className="my-popup"
+                contentStyle={{ overflowY: 'scroll', margin: '10px auto' }}
+            >
                 <h2>Create a new Order</h2>
+                <p>
+                    Make sure to set the Restaurant ID before adding products.
+                </p>
                 <OrderForm/>
             </Popup>
 

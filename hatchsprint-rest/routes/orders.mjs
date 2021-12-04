@@ -88,7 +88,7 @@ orders.post("/", (req, res) => {
         return;
     }
 
-    const totalCost = preTaxCost + tax + tip;
+    const totalCost = parseInt(preTaxCost) + parseInt(tax) + parseInt(tip);
     const [date, time] = new Date().toISOString().split('T');
 
     // Insert into Orders table-------------------------------------------------

@@ -125,7 +125,7 @@ label{
     /* float: left; */
     clear: left;
     width: 200px;
-    text-align: left;
+    text-align: right;
     padding: 5px;
     margin: 5px;
 }
@@ -135,6 +135,16 @@ input {
   /* float: left; */
   padding: 5px;
   margin: 5px;
+}
+
+select {
+  padding: 5px;
+  margin: 5px;
+  text-align: left;
+}
+
+input, select {
+  width: 200px;
 }
 
 

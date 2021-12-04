@@ -1,12 +1,12 @@
-export default function CustomerDataList({customerData, id}) {
+export default function CustomerDataList({customerData}) {
     return (
-        <datalist id={id}>
+        <>
             {customerData.map( (cust, i) => (
                     <option key={i} value={cust.customerID}>
                         {cust.customerID + " " + cust.firstName + " " + cust.lastName}
                     </option>
                 ))
             }
-        </datalist>
+        </>
 )}
 

@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import RestaurantDataList from '../components/RestaurantDataList.js';
 
 export default function CreateProduct() {
-    const [productName, setProductName] = useState('');
-    const [availability, setAvailability] = useState('');
-    const [price, setPrice] = useState('');
-    const [restaurantID, setRestaurantID] = useState('');
+    const [productName, setProductName] = useState(null);
+    const [availability, setAvailability] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [restaurantID, setRestaurantID] = useState(null);
     const [restaurantData, setRestaurantData] = useState([]);
 
     const create = async (event) => {
@@ -40,6 +40,7 @@ export default function CreateProduct() {
         <form onSubmit={create}>
             <label htmlFor="productName">Product Name</label>
             <input
+                required
                 type="text"
                 id="productName"
                 name="productName"
@@ -49,18 +50,22 @@ export default function CreateProduct() {
             <br/>
 
             <label htmlFor="availability">Availability</label>
-            <input
-                type="text"
-                id="availability"
+            <select
+                required
                 name="availability"
-                placeholder="Availability"
                 onChange={e => setAvailability(e.target.value)}
-            ></input>
+            >
+                <option label=""/>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
             <br/>
 
             <label htmlFor="price">Price</label>
             <input
-                type="text"
+                required
+                type="number"
+                step="0.01"
                 id="price"
                 name="price"
                 placeholder="Price"
@@ -69,16 +74,18 @@ export default function CreateProduct() {
             <br/>
 
             <label htmlFor="restaurantID">Restaurant ID</label>
-            <input
+            <select
+                required
                 type="text"
                 placeholder="Restaurant ID"
                 onChange={e => setRestaurantID(e.target.value)}
-                list="restaurantIDs"
-            ></input>
-            <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
+            >
+                <option label=""/>
+                <RestaurantDataList restaurantData={restaurantData}/>
+            </select>
             <br/>
 
-            <button onClick={create}>Create</button>
+            <button>Create</button>
         </form>
     )
 }

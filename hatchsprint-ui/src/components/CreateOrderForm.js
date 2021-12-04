@@ -108,49 +108,52 @@ export default function CreateOrder() {
                 <br/>
 
                 <label htmlFor="customerID">Customer ID</label>
-                <input
+                <select
                     required
-                    type="number"
+                    name="customerID"
                     placeholder="Enter Customer ID"
                     onChange={e => setCustomerID(e.target.value)}
                     list="customerIDs"
-                ></input>
-                <CustomerDataList customerData={customerData} id="customerIDs"/>
+                >
+                    <option label=""/>
+                    <CustomerDataList customerData={customerData} id="customerIDs"/>
+                </select>
                 <br/>
 
                 <label htmlFor="restaurantID">Restaurant ID </label>
-                <input
+                <select
                     required
-                    type="number"
+                    name="restaurantID"
                     placeholder="Enter Restaurant ID"
                     onChange={e => handleSetRestaurant(e)}
-                    list="restaurantIDs"
-                ></input>
-                <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
+                >
+                    <option label=""/>
+                    <RestaurantDataList restaurantData={restaurantData}/>
+                </select>
                 <br/>
 
                 <label htmlFor="driverID">Driver ID </label>
-                <input
+                <select
                     required
-                    type="numbers"
+                    name="driverID"
                     placeholder="Enter Driver ID"
                     onChange={e => setDriverID(e.target.value)}
-                    list="driverIDs"
-                ></input>
-                <DriverDataList driverData={driverData} id="driverIDs"/>
+                >
+                    <option label=""/>
+                    <DriverDataList driverData={driverData}/>
+                </select>
+                <br/>
                 <br/>
 
-                <br/>
                 </div>
 
-                <br/>
                 <AddAnotherProduct
                     productIDs={productIDs}
                     setProductIDs={setProductIDs}
                     productData={productData}
                 />
-                <br/>
 
+                <br/>
             <button>Create</button>
         </form>
     )

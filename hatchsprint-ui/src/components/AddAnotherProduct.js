@@ -23,11 +23,13 @@ export default function AddAnotherProduct({productIDs, setProductIDs, productDat
                     <>
                         <label>{`Product ${c}`}</label>
                         <select
+                            required
                             key={index}
                             name={`productIDs[][${index}]`}
                             onChange={e => setProductIDs([...productIDs, e.target.value])}
                             placeholder="Enter Product ID"
                         >
+                        <option label=""/>
                         {productData.map( (prod, i) => (
                                 <option key={i} value={prod.restaurantID}>
                                     {prod.productID + " " + prod.productName}

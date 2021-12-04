@@ -1,11 +1,11 @@
-export default function RestaurantDataList({restaurantData, id}) {
+export default function RestaurantDataList({restaurantData}) {
     return (
-        <datalist id={id}>
+        <>
             {restaurantData.map( (rest, i) => (
                     <option key={i} value={rest.restaurantID}>
-                        {rest.restaurantID + " " + rest.restaurantName + " " + rest.streetAddress1}
+                        {rest.restaurantID + ": " + rest.restaurantName + " " + rest.streetAddress1}
                     </option>
                 ))
             }
-        </datalist>
+        </>
 )}
