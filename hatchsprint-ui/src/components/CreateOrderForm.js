@@ -140,6 +140,7 @@ export default function CreateOrder() {
                     onChange={e => setDriverID(e.target.value)}
                 >
                     <option label=""/>
+                    <option value="" label="***Pickup Order***"/>
                     <DriverDataList driverData={driverData}/>
                 </select>
                 <br/>

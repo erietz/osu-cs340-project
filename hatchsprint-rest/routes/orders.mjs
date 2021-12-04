@@ -88,6 +88,8 @@ orders.post("/", (req, res) => {
         return;
     }
 
+    const driverIDMaybeNull = driverID === "" || driverID === "null" ? null : driverID
+
     const totalCost = parseInt(preTaxCost) + parseInt(tax) + parseInt(tip);
     const [date, time] = new Date().toISOString().split('T');
 
@@ -108,7 +110,7 @@ orders.post("/", (req, res) => {
             date,
             time,
             customerID,
-            driverID,
+            driverIDMaybeNull,
             restaurantID
         ],
         (error, results, _) => {
@@ -116,6 +118,7 @@ orders.post("/", (req, res) => {
             console.error(error);
             res.status(400).json(error);
         } else {
+
             // Insert into OrderProducts table
             const orderID = results.insertId;
             productIDs.forEach((productID) => insertIntoOrderProducts(parseInt(orderID), parseInt(productID)));

@@ -108,7 +108,7 @@ CREATE TABLE `Orders` (
   `totalCost` FLOAT NOT NULL,
   `date` DATE NOT NULL,
   `time` VARCHAR(45) NOT NULL,
-  `driverID` INT NOT NULL,
+  `driverID` INT NULL,
   `customerID` INT NOT NULL,
   `restaurantID` INT NOT NULL,
   PRIMARY KEY (`orderID`)

@@ -1,4 +1,4 @@
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 function OrderRow({ order, onDelete }) {
     return (
@@ -13,7 +13,6 @@ function OrderRow({ order, onDelete }) {
             <td>{ order.customerID }</td>
             <td>{ order.driverID }</td>
             <td>{ order.restaurantID }</td>
-            <td><MdEdit/></td>
             <td><MdDelete onClick={() => onDelete(order.orderID)}/></td>
         </tr>
     )
@@ -34,7 +33,6 @@ export default function OrderTable({ orders, onDelete }) {
                     <td>customerID</td>
                     <td>driverID</td>
                     <td>restaurantID</td>
-                    <td>Edit</td>
                     <td>Delete</td>
                 </tr>
             </thead>

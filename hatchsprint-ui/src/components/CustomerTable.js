@@ -1,4 +1,4 @@
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 function CustomerRow({ customer, onDelete }) {
     return (
@@ -14,7 +14,6 @@ function CustomerRow({ customer, onDelete }) {
             <td>{customer.state}</td>
             <td>{customer.zip}</td>
             <td>{customer.phoneNumber}</td>
-            <td><MdEdit/></td>
             <td><MdDelete onClick={() => onDelete(customer.customerID)}/></td>
         </tr>
     )
@@ -36,7 +35,6 @@ export default function CustomerTable({ customers, onDelete }) {
                     <td>state</td>
                     <td>zip</td>
                     <td>phoneNumber</td>
-                    <td>Edit</td>
                     <td>Delete</td>
                 </tr>
             </thead>

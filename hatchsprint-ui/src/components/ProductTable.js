@@ -1,4 +1,4 @@
-import { MdEdit, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 function ProductRow({ product, onDelete }) {
     return (
@@ -8,7 +8,6 @@ function ProductRow({ product, onDelete }) {
             <td>{ product.availability }</td>
             <td>{ product.price }</td>
             <td>{ product.restaurantID }</td>
-            <td><MdEdit/></td>
             <td><MdDelete onClick={() => onDelete(product.productID)} /></td>
         </tr>
     )
@@ -24,7 +23,6 @@ export default function ProductTable({ products, onDelete }) {
                     <td>availability</td>
                     <td>price</td>
                     <td>restaurantID</td>
-                    <td>Edit</td>
                     <td>Delete</td>
                 </tr>
             </thead>
