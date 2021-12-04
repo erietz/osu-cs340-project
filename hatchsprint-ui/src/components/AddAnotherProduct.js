@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../App.css";
-import ProductDataList from "./ProductDataList.js";
+// import ProductDataList from "./ProductDataList.js";
 
 export default function AddAnotherProduct({productIDs, setProductIDs, productData}) {
 
@@ -22,15 +22,19 @@ export default function AddAnotherProduct({productIDs, setProductIDs, productDat
                 {Array.from(Array(counter).keys()).map((c, index) => (
                     <>
                         <label>{`Product ${c}`}</label>
-                        <input
+                        <select
                             key={index}
-                            type="text"
                             name={`productIDs[][${index}]`}
                             onChange={e => setProductIDs([...productIDs, e.target.value])}
                             placeholder="Enter Product ID"
-                            list="productIDs"
-                        ></input>
-                        <ProductDataList productData={productData} id="productIDs"/>
+                        >
+                        {productData.map( (prod, i) => (
+                                <option key={i} value={prod.restaurantID}>
+                                    {prod.productID + " " + prod.productName}
+                                </option>
+                            ))
+                        }
+                        </select>
                         <br/>
                     </>
                 ))}
