@@ -41,6 +41,10 @@ export default function CreateOrder() {
 
     const handleSetRestaurant = async (event) => {
         setRestaurantID(event.target.value)
+        fetch(`/api/products?restaurantID=${event.target.value}`)
+            .then(data => data.json())
+            .then(json => setProductData(json))
+            .catch(error => console.error(error));
     }
 
     const create = async (event) => {
@@ -143,9 +147,7 @@ export default function CreateOrder() {
                 <AddAnotherProduct
                     productIDs={productIDs}
                     setProductIDs={setProductIDs}
-                    restaurantID={restaurantID}
                     productData={productData}
-                    setProductData={setProductData}
                 />
                 <br/>
 

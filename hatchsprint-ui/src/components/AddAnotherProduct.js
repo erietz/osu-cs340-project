@@ -2,11 +2,7 @@ import { useState, useEffect } from "react";
 import "../App.css";
 import ProductDataList from "./ProductDataList.js";
 
-export default function AddAnotherProduct({productIDs, setProductIDs, restaurantID, productData, setProductData}) {
-    if (!restaurantID) {
-        alert("Please set a restaurantID before trying to add a product");
-        return;
-    }
+export default function AddAnotherProduct({productIDs, setProductIDs, productData}) {
 
     const [counter, setCounter] = useState(0);
 
@@ -16,13 +12,6 @@ export default function AddAnotherProduct({productIDs, setProductIDs, restaurant
         console.log(counter);
     };
 
-    useEffect( () => {
-        fetch(`/api/products?restaurantID=${restaurantID}`)
-            .then(data => data.json())
-            .then(json => setProductData(json))
-            .catch(error => console.error(error));
-    }, []);
-
     return (
         <>
             <button id="AddAnother" onClick={handleClick}>Add Another Product</button>
@@ -30,9 +19,9 @@ export default function AddAnotherProduct({productIDs, setProductIDs, restaurant
             <br/>
 
             <div className="multicolumn">
-                {Array.from(Array(counter)).map((c, index) => (
+                {Array.from(Array(counter).keys()).map((c, index) => (
                     <>
-                        <label> </label>
+                        <label>{`Product ${c}`}</label>
                         <input
                             key={index}
                             type="text"
@@ -43,7 +32,7 @@ export default function AddAnotherProduct({productIDs, setProductIDs, restaurant
                         ></input>
                         <ProductDataList productData={productData} id="productIDs"/>
                         <br/>
-                        </>
+                    </>
                 ))}
             </div>
 
