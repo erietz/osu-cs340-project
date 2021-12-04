@@ -36,6 +36,7 @@ export default function CreateDriver() {
             <form onSubmit={create}>
                 <label htmlFor="fname">First Name</label>
                 <input
+                    required
                     type="text"
                     id="fname"
                     name="fname"
@@ -46,6 +47,7 @@ export default function CreateDriver() {
 
                 <label htmlFor="lname">Last Name</label>
                 <input
+                    required
                     type="text"
                     id="lname"
                     name="lname"
@@ -56,6 +58,7 @@ export default function CreateDriver() {
 
                 <label htmlFor="license">License Number</label>
                 <input
+                    required
                     type="text"
                     id="license"
                     name="license"
