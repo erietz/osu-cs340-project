@@ -3,9 +3,6 @@ import pool from "../dbConnector.mjs";
 
 const products = express.Router();
 
-//------------------------------------------------------------------------------
-// Products
-//------------------------------------------------------------------------------
 products.get("/", (_, res) => {
     pool.query("SELECT * FROM Products;", (error, results, _) => {
         if (error) {
@@ -46,7 +43,7 @@ products.post("/", (req, res) => {
 products.delete("/", (req, res) => {
     const body = req.body;
     pool.query(
-        `DELETE FROM Products WHERE productID = "${body.productID}"`,
+        `DELETE FROM Products WHERE productID = ?`, [body.productID],
         (error, results, fields) => {
             if (error) {
                 console.error(error);

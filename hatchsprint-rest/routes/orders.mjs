@@ -7,9 +7,13 @@ const insertIntoOrderProducts = (orderID, productID) => {
     pool.query(
         `
         INSERT INTO OrderProducts (orderID, productID)
-        VALUES (${orderID}, ${productID})
+        VALUES (?, ?)
         ;
-        `.replace(/\n/g, ""),
+        `,
+        [
+            orderID,
+            productID
+        ],
         (error, results, fields) => {
             if (error) {
                 console.error(error);
@@ -24,9 +28,13 @@ const insertIntoRestaurantCustomers = (restaurantID, customerID) => {
     pool.query(
         `
         INSERT INTO RestaurantCustomers (customerID, restaurantID)
-        VALUES (${customerID}, ${restaurantID})
+        VALUES (?, ?)
         ;
-        `.replace(/\n/g, ""),
+        `,
+        [
+            customerID,
+            restaurantID
+        ],
         (error, results, fields) => {
             if (error) {
                 console.error(error);
@@ -51,7 +59,7 @@ orders.get("/", (_, res) => {
 orders.delete("/", (req, res) => {
     const body = req.body;
     pool.query(
-        `DELETE FROM Orders WHERE orderID = "${body.orderID}"`,
+        "DELETE FROM Orders WHERE orderID = ?", [body.orderID],
         (error, results, fields) => {
             if (error) {
                 console.error(error);
@@ -78,8 +86,6 @@ orders.post("/", (req, res) => {
     const totalCost = preTaxCost + tax + tip;
     const [date, time] = new Date().toISOString().split('T');
 
-    console.log("date", date, "time", time);
-
     // Insert into Orders table-------------------------------------------------
     pool.query(
         `
@@ -87,11 +93,19 @@ orders.post("/", (req, res) => {
             (preTaxCost, tax, tip, totalCost, \`date\`, time, customerID,
             driverID, restaurantID)
         VALUES 
-            (${preTaxCost}, ${tax}, ${tip}, ${totalCost}, "${date}", "${time}",
-            ${customerID}, ${driverID}, ${restaurantID})
-
-        `.replace(/\n/g, ""),
-        {title: 'test'},
+            (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `,
+        [
+            preTaxCost,
+            tax,
+            tip,
+            totalCost,
+            date,
+            time,
+            customerID,
+            driverID,
+            restaurantID
+        ],
         (error, results, _) => {
         if (error) {
             console.error(error);
