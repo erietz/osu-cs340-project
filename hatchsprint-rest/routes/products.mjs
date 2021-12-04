@@ -3,15 +3,31 @@ import pool from "../dbConnector.mjs";
 
 const products = express.Router();
 
-products.get("/", (_, res) => {
-    pool.query("SELECT * FROM Products;", (error, results, _) => {
-        if (error) {
-            console.error(error);
-            res.status(400).json(error);
-        } else {
-            res.status(200).json(results);
-        }
-    });
+products.get("/", (req, res) => {
+    const restaurantID = req.query.restaurantID;
+    if (restaurantID === undefined || restaurantID === null) {
+        pool.query("SELECT * FROM Products;", (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    } else {
+        pool.query(
+            "SELECT * FROM Products p WHERE p.restaurantID = ?;",
+            [restaurantID],
+            (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    }
+
 });
 
 products.post("/", (req, res) => {
