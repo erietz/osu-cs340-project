@@ -26,6 +26,9 @@ export default function SideBar() {
                 <li>
                     <Link to="/restaurantcustomers">RestaurantCustomers</Link>
                 </li>
+                <li>
+                    <Link to="/driverorders">DriverOrders</Link>
+                </li>
             </ul>
         </div>
     )
