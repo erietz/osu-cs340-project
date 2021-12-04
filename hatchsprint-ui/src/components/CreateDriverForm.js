@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function CreateDriver() {
 
@@ -28,38 +30,44 @@ export default function CreateDriver() {
     }
 
     return (
-        <form onSubmit={create}>
-            <label htmlFor="fname">First Name</label>
-            <input
-                type="text"
-                id="fname"
-                name="fname"
-                placeholder="First Name"
-                onChange={e => setFname(e.target.value)}
-            />
-            <br/>
+        <Popup trigger={<button>Create Driver</button>} modal className="my-popup">
+            <h2>Create a new driver</h2>
 
-            <label htmlFor="lname">Last Name</label>
-            <input
-                type="text"
-                id="lname"
-                name="lname"
-                placeholder="Last Name"
-                onChange={e => setLname(e.target.value)}
-            />
-            <br/>
+            <form onSubmit={create}>
+                <label htmlFor="fname">First Name</label>
+                <input
+                    type="text"
+                    id="fname"
+                    name="fname"
+                    placeholder="First Name"
+                    onChange={e => setFname(e.target.value)}
+                />
+                <br/>
 
-            <label htmlFor="license">License Number</label>
-            <input
-                type="text"
-                id="license"
-                name="license"
-                placeholder="License Number"
-                onChange={e => setLicense(e.target.value)}
-            />
-            <br/>
+                <label htmlFor="lname">Last Name</label>
+                <input
+                    type="text"
+                    id="lname"
+                    name="lname"
+                    placeholder="Last Name"
+                    onChange={e => setLname(e.target.value)}
+                />
+                <br/>
 
-            <button type="submit">Create</button>
-        </form>
+                <label htmlFor="license">License Number</label>
+                <input
+                    type="text"
+                    id="license"
+                    name="license"
+                    placeholder="License Number"
+                    onChange={e => setLicense(e.target.value)}
+                />
+                <br/>
+
+                <button type="submit">Create</button>
+                <br/>
+                <br/>
+            </form>
+        </Popup>
     )
 }
