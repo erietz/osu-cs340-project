@@ -83,6 +83,11 @@ orders.post("/", (req, res) => {
         productIDs
     } = req.body;
 
+    if (productIDs.length === 0) {
+        res.status(400).json({ error: "Order has no products" });
+        return;
+    }
+
     const totalCost = preTaxCost + tax + tip;
     const [date, time] = new Date().toISOString().split('T');
 
