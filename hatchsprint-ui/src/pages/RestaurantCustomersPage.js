@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import SideBar from '../components/Sidebar.js';
-import SearchRestaurantCustomers from '../components/SearchRestaurantCustomers.js';
 import RestaurantCustomersTable from '../components/RestaurantCustomersTable.js';
 import RestaurantDataList from '../components/RestaurantDataList.js';
 
@@ -23,17 +22,20 @@ export default function RestaurantCustomersPage() {
             .catch(err => console.error(err));
     }, [])
 
-    const [id, setID] = useState('');
+    const [id, setID] = useState("reset");
     const search = async (event) => {
         event.preventDefault();
-        if (id === "") {
-            window.location.reload();
-            return;
-        }
-        fetch(`/api/restaurantcustomers?restaurantID=${id}`)
+        if (id === "reset") {
+        fetch(`/api/restaurantcustomers`)
             .then(data => data.json())
             .then(json => setTableData(json))
             .catch(err => console.error(err));
+        } else {
+            fetch(`/api/restaurantcustomers?restaurantID=${id}`)
+                .then(data => data.json())
+                .then(json => setTableData(json))
+                .catch(err => console.error(err));
+        }
     }
 
     return (
@@ -44,13 +46,14 @@ export default function RestaurantCustomersPage() {
             <h1>RestaurantCustomers</h1>
             <form onSubmit={search}>
                 <label htmlFor="restaurantcustomers">Search RestaurantCustomers</label>
-                <input
+                <select
                     type="text"
                     placeholder="Enter restaurant ID"
-                    list="restaurantIDs"
                     onChange={e => setID(e.target.value)}
-                ></input>
-                <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
+                >
+                    <option value="reset" label="Reset Search"/>
+                    <RestaurantDataList restaurantData={restaurantData} id="restaurantIDs"/>
+                </select>
                 <button>Search</button>
                 <br/>
             </form>

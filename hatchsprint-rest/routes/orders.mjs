@@ -116,14 +116,16 @@ orders.post("/", (req, res) => {
             console.error(error);
             res.status(400).json(error);
         } else {
+            // Insert into OrderProducts table
             const orderID = results.insertId;
-            productIDs.forEach((productID) => insertIntoOrderProducts(orderID, productID));
+            productIDs.forEach((productID) => insertIntoOrderProducts(parseInt(orderID), parseInt(productID)));
+
+            // Insert into RestaurantCustomers table
+            insertIntoRestaurantCustomers(parseInt(restaurantID), parseInt(customerID));
             res.status(201).json(results);
         }
     });
 
-    // Insert into RestaurantCustomers table
-    insertIntoRestaurantCustomers(restaurantID, customerID);
 
 });
 

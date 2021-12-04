@@ -1,12 +1,12 @@
-export default function OrderDataList({ orderData, id }) {
+export default function OrderDataList({ orderData}) {
     return (
-        <datalist id={id}>
+        <>
             {orderData.map( (order, i) => (
                     <option key={i} value={order.orderID}>
-                        {order.orderID + " Date: " + order.date + " Time: " + order.time}
+                        {`ID: ${order.orderID} Date:  ${order.date.split('T')[0]} Time: ${order.time}`}
                     </option>
                 ))
             }
-        </datalist>
+        </>
     )
 };

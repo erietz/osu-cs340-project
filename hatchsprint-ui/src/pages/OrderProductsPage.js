@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import SideBar from '../components/Sidebar.js';
-import SearchOrderProducts from '../components/SearchOrderProducts.js';
 import OrderProductsTable from '../components/OrderProductsTable.js';
 import OrderDataList from '../components/OrderDataList.js';
 
@@ -15,16 +14,20 @@ export default function OrderProductsPage() {
             .catch(err => console.error(err));
     }, [])
 
-    const [orderID, setOrderID] = useState('');
+    const [orderID, setOrderID] = useState("reset");
     const Search = async (event) => {
         event.preventDefault();
-        if (orderID === "") {
-            window.location.reload();
+        if (orderID === "reset") {
+            fetch(`/api/orderproducts`)
+                .then(data => data.json())
+                .then(json => setTableData(json))
+                .catch(err => console.error(err));
+        } else {
+            fetch(`/api/orderproducts?orderID=${orderID}`)
+                .then(data => data.json())
+                .then(json => setTableData(json))
+                .catch(err => console.error(err));
         }
-        fetch(`/api/orderproducts?orderID=${orderID}`)
-            .then(data => data.json())
-            .then(json => setTableData(json))
-            .catch(err => console.error(err));
     }
 
     useEffect( () => {
@@ -43,14 +46,15 @@ export default function OrderProductsPage() {
 
 
             <form onSubmit={Search} method="GET">
-                <label htmlFor="orderID">Search OrderProducts</label>
-                <input
+                <label htmlFor="orderID">Search OrderProducts by Order ID</label>
+                <select
                     type="text"
                     placeholder="Enter order ID"
                     onChange={e => setOrderID(e.target.value)}
-                    list="orderIDs"
-                ></input>
-                <OrderDataList orderData={orderData} id="orderIDs"/>
+                >
+                    <option value="reset">Reset Search</option>
+                    <OrderDataList orderData={orderData}/>
+                </select>
                 <button>Search</button>
                 <br/>
             </form>

@@ -31,7 +31,7 @@ export default function AddAnotherProduct({productIDs, setProductIDs, productDat
                         >
                         <option label=""/>
                         {productData.map( (prod, i) => (
-                                <option key={i} value={prod.restaurantID}>
+                                <option key={i} value={prod.productID}>
                                     {prod.productID + " " + prod.productName}
                                 </option>
                             ))
