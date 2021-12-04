@@ -27,7 +27,6 @@ products.get("/", (req, res) => {
             }
         });
     }
-
 });
 
 products.post("/", (req, res) => {
