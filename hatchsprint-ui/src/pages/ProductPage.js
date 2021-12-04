@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import SideBar from '../components/Sidebar.js';
 import CreateProduct from '../components/CreateProductForm.js';
 import ProductTable from '../components/ProductTable.js';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function ProductPage() {
     const [products, setProducts] = useState([]);
@@ -38,7 +40,14 @@ export default function ProductPage() {
 
             <h1>Manage Products</h1>
 
-            <CreateProduct/>
+            <Popup trigger={<button> Create New Product </button>} modal className="my-popup">
+                <h2>Create a new Product</h2>
+                <CreateProduct/>
+            </Popup>
+
+            <br/>
+            <br/>
+
             <div className="table-container">
                 <ProductTable products={products} onDelete={onDelete}/>
             </div>

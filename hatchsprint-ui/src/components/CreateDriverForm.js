@@ -4,9 +4,9 @@ import 'reactjs-popup/dist/index.css';
 
 export default function CreateDriver() {
 
-    const [fname, setFname] = useState('');
-    const [lname, setLname] = useState('');
-    const [license, setLicense] = useState('');
+    const [fname, setFname] = useState(null);
+    const [lname, setLname] = useState(null);
+    const [license, setLicense] = useState(null);
 
     const create = async (event) => {
         const newDriver = {fname, lname, license};

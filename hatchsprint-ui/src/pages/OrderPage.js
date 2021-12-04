@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import SideBar from '../components/Sidebar.js';
 import OrderForm from '../components/CreateOrderForm.js';
 import OrderTable from '../components/OrderTable.js';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function OrderPage() {
     const [orders, setOrders] = useState([]);
@@ -38,7 +40,15 @@ export default function OrderPage() {
             <br/>
 
             <h1>Manage Orders</h1>
-            <OrderForm/>
+
+
+            <Popup trigger={<button> Create New Order </button>} modal className="my-popup">
+                <h2>Create a new Order</h2>
+                <OrderForm/>
+            </Popup>
+
+            <br/>
+            <br/>
 
             <div className="table-container">
                 <OrderTable orders={orders} onDelete={onDelete}/>

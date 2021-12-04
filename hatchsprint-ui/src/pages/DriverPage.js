@@ -39,6 +39,10 @@ export default function DriverPage() {
             <h1>Manage Drivers</h1>
 
             <CreateDriver/>
+
+            <br/>
+            <br/>
+
             <div className="table-container">
                 <DriverTable drivers={drivers} onDelete={onDelete}/>
             </div>

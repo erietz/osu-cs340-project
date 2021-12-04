@@ -3,9 +3,6 @@ import pool from "../dbConnector.mjs";
 
 const drivers = express.Router();
 
-//------------------------------------------------------------------------------
-// Drivers
-//------------------------------------------------------------------------------
 drivers.get("/", (_, res) => {
     pool.query("SELECT * FROM Drivers;", (error, results, _) => {
         if (error) {
@@ -20,7 +17,13 @@ drivers.post("/", (req, res) => {
     const body = req.body;
     pool.query(
         `INSERT INTO Drivers (firstName, lastName, licenseNumber)\
-            VALUES ("${body.fname}", "${body.lname}", "${body.license}");`,
+            VALUES (?, ?, ?);`
+        ,
+        [
+            body.fname,
+            body.lname,
+            body.license
+        ],
         (error, results, fields) => {
             if (error) {
                 console.error(error);
