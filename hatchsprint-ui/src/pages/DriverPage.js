@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { useHistory} from "react-router-dom";
 import SideBar from '../components/Sidebar.js';
 import CreateDriver from '../components/CreateDriverForm.js';
 import DriverTable from '../components/DriverTable.js';
 
-export default function DriverPage() {
+export default function DriverPage({ setDriverToEdit }) {
+    const history = useHistory();
     const [drivers, setDrivers] = useState([]);
+
     useEffect( () => {
         fetch("/api/drivers")
             .then(data => data.json())
@@ -31,22 +34,9 @@ export default function DriverPage() {
         }
     };
 
-    const onEdit = async (driver) => {
-        const response = await fetch(`/api/drivers?driverID=${driver.driverID}`, {
-            method: "PUT",
-            body: JSON.stringify(driver),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        if (response.status === 200) {
-            fetch("/api/drivers")
-            .then(data => data.json())
-            .then(json => setDrivers(json))
-            .catch(err => console.error(err));
-        } else {
-            console.error(`Failed to edit driver with id = ${driver.driverID}, status code = ${response.status}`);
-        }
+    const onEdit = driverToEdit => {
+        setDriverToEdit(driverToEdit);
+        history.push("/editdriver");
     }
 
     return (

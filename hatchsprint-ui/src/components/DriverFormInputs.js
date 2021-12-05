@@ -1,37 +1,45 @@
-export default function DriverFormInputs( {states } ) {
-    const {setFname, setLname, setLicense} = states;
+export default function DriverFormInputs({ setStateFunctions, defaultValues }) {
+    const {setFirstName, setLastName, setLicenseNumber} = setStateFunctions;
+
+    const defaultFirstName = defaultValues.firstName !== undefined ? defaultValues.firstName : "";
+    const defaultLastName = defaultValues.lastName !== undefined ? defaultValues.lastName : "";
+    const defaultLicenseNumber = defaultValues.licenseNumber !== undefined ? defaultValues.licenseNumber : "";
+
     return (
         <>
-            <label htmlFor="fname">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input
                 required
                 type="text"
-                id="fname"
-                name="fname"
+                id="firstName"
+                name="firstName"
+                defaultValue={defaultFirstName}
                 placeholder="First Name"
-                onChange={e => setFname(e.target.value)}
+                onChange={e => setFirstName(e.target.value)}
             />
             <br/>
 
-            <label htmlFor="lname">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
                 required
                 type="text"
-                id="lname"
-                name="lname"
+                id="lastName"
+                name="lastName"
+                defaultValue={defaultLastName}
                 placeholder="Last Name"
-                onChange={e => setLname(e.target.value)}
+                onChange={e => setLastName(e.target.value)}
             />
             <br/>
 
-            <label htmlFor="license">License Number</label>
+            <label htmlFor="licenseNumber">License Number</label>
             <input
                 required
                 type="text"
-                id="license"
-                name="license"
+                id="licenseNumber"
+                name="licenseNumber"
+                defaultValue={defaultLicenseNumber}
                 placeholder="License Number"
-                onChange={e => setLicense(e.target.value)}
+                onChange={e => setLicenseNumber(e.target.value)}
             />
         </>
     )

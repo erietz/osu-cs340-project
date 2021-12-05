@@ -20,9 +20,9 @@ drivers.post("/", (req, res) => {
             VALUES (?, ?, ?);`
         ,
         [
-            body.fname,
-            body.lname,
-            body.license
+            body.firstName,
+            body.lastName,
+            body.licenseNumber
         ],
         (error, results, fields) => {
             if (error) {
@@ -47,5 +47,30 @@ drivers.delete("/", (req, res) => {
             }
         });
 });
+
+drivers.put("/", (req, res) => {
+    const driverID = req.query.driverID;
+    pool.query(
+        `
+        UPDATE Drivers
+        SET firstName = ?, lastName = ?, licenseNumber = ?
+        WHERE driverID = ?
+        `,
+        [
+            req.body.firstName,
+            req.body.lastName,
+            req.body.licenseNumber,
+            driverID
+        ],
+        (error, results, fields) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(201).json({ status: "Driver Updated" })
+            }
+        });
+    }
+);
 
 export default drivers;

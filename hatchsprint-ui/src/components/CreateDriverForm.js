@@ -5,12 +5,12 @@ import 'reactjs-popup/dist/index.css';
 
 export default function CreateDriver() {
 
-    const [fname, setFname] = useState(null);
-    const [lname, setLname] = useState(null);
-    const [license, setLicense] = useState(null);
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null);
+    const [licenseNumber, setLicenseNumber] = useState(null);
 
     const create = async (event) => {
-        const newDriver = {fname, lname, license};
+        const newDriver = {firstName, lastName, licenseNumber};
 
         event.preventDefault()  // do not reload the page
         const response = await fetch('/api/drivers', {
@@ -30,10 +30,10 @@ export default function CreateDriver() {
         }
     }
 
-    const states = {
-        setFname: setFname,
-        setLname: setLname,
-        setLicense: setLicense,
+    const setStateFunctions = {
+        setFirstName: setFirstName,
+        setLastName: setLastName,
+        setLicenseNumber: setLicenseNumber,
     }
 
     return (
@@ -42,7 +42,7 @@ export default function CreateDriver() {
 
             <form onSubmit={create}>
                 <br/>
-                <DriverFormInputs states={states}/>
+                <DriverFormInputs setStateFunctions={setStateFunctions} defaultValues={{}}/>
 
                 <br/>
                 <br/>

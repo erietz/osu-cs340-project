@@ -68,7 +68,9 @@ export default function RestaurantCustomersPage() {
 
             <h1>RestaurantCustomers</h1>
             <form onSubmit={search}>
-                <label htmlFor="restaurantcustomers">Search RestaurantCustomers</label>
+                <label htmlFor="restaurantcustomers">
+                Search RestaurantCustomers by Restaurant ID.
+                </label> 
                 <select
                     type="text"
                     placeholder="Enter restaurant ID"
