@@ -11,6 +11,7 @@ function OrderProductsRow({ rowData, onDelete }) {
     )
 }
 
+
 export default function OrderProductsTable({ data, onDelete }) {
     return (
         <table id="data" className="center">
