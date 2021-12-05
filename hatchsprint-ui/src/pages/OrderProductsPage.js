@@ -14,6 +14,13 @@ export default function OrderProductsPage() {
             .catch(err => console.error(err));
     }, [])
 
+    useEffect( () => {
+        fetch("/api/orders")
+            .then(data => data.json())
+            .then(json => setOrderData(json))
+            .catch(err => console.error(err));
+    }, [])
+
     const [orderID, setOrderID] = useState("reset");
     const Search = async (event) => {
         event.preventDefault();
@@ -30,12 +37,27 @@ export default function OrderProductsPage() {
         }
     }
 
-    useEffect( () => {
-        fetch("/api/orders")
+    const onDelete = async (orderID, productID) => {
+        const body = {
+            orderID: orderID,
+            productID: productID
+        }
+        const response = await fetch("/api/orderproducts", {
+            method: "DELETE",
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        if (response.status === 200) {
+            fetch("/api/orderproducts")
             .then(data => data.json())
-            .then(json => setOrderData(json))
+            .then(json => setTableData(json))
             .catch(err => console.error(err));
-    }, [])
+        } else {
+            console.error(`Failed to delete orderproduct with orderID = ${orderID} and productID = ${productID}, status code = ${response.status}`);
+        }
+    }
 
     return (
         <>
@@ -62,7 +84,7 @@ export default function OrderProductsPage() {
 
             <br/>
             <div className="table-container">
-                <OrderProductsTable data={tableData}/>
+                <OrderProductsTable data={tableData} onDelete={onDelete}/>
             </div>
         </>
     )

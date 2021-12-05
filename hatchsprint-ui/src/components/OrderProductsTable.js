@@ -1,17 +1,17 @@
 import { MdDelete } from "react-icons/md";
 
-function OrderProductsRow({ rowData }) {
+function OrderProductsRow({ rowData, onDelete }) {
     return (
         <tr>
             <td>{rowData.orderID}</td>
             <td>{rowData.productID}</td>
             <td>{rowData.productName}</td>
-            <td><MdDelete/></td>
+            <td><MdDelete onClick={() => onDelete(rowData.orderID, rowData.productID)}/></td>
         </tr>
     )
 }
 
-export default function OrderProductsTable({ data }) {
+export default function OrderProductsTable({ data, onDelete }) {
     return (
         <table id="data" className="center">
             <thead>
@@ -23,7 +23,7 @@ export default function OrderProductsTable({ data }) {
                 </tr>
             </thead>
             <tbody>
-                {data.map((foo, i) => <OrderProductsRow rowData={foo} key={i} /> )}
+                {data.map((foo, i) => <OrderProductsRow rowData={foo} onDelete={onDelete} key={i} /> )}
             </tbody>
         </table>
     )

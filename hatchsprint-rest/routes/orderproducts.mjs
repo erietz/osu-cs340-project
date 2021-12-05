@@ -41,4 +41,27 @@ orderproducts.get("/", (req, res) => {
     }
 });
 
+orderproducts.delete("/", (req, res) => {
+    const orderID = req.body.orderID;
+    const productID = req.body.productID;
+    pool.query(
+        `DELETE FROM OrderProducts
+        WHERE orderID = ? and productID = ?
+        `,
+        [
+            orderID,
+            productID
+        ],
+        (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
+        }
+    )
+});
+
+
 export default orderproducts;
