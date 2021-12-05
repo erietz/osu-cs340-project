@@ -26,7 +26,7 @@ export default function EditDriverPage({driverToEdit}) {
             }
         })
 
-        if (response.status === 201) {
+        if (response.status === 200) {
             alert(`Driver updated, status code = ${response.status}`);
         } else {
             alert(`Failed to update driver, status code = ${response.status}`);
