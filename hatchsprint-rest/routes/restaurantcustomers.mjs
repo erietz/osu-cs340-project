@@ -39,8 +39,31 @@ restaurantcustomers.get("/", (req, res) => {
                 } else {
                     res.status(200).json(results);
                 }
-            });
+            }
+        );
+    }
+});
+
+restaurantcustomers.delete("/", (req, res) => {
+    const restaurantID = req.body.restaurantID;
+    const customerID = req.body.customerID;
+    pool.query(
+        `DELETE FROM RestaurantCustomers
+        WHERE restaurantID = ? and customerID = ?
+        `,
+        [
+            restaurantID,
+            customerID
+        ],
+        (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
         }
+    )
 });
 
 export default restaurantcustomers;

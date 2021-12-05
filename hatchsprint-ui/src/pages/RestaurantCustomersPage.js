@@ -38,6 +38,29 @@ export default function RestaurantCustomersPage() {
         }
     }
 
+    const onDelete = async (restaurantID, customerID) => {
+        const body = {
+                customerID: customerID,
+                restaurantID: restaurantID
+            }
+        const response = await fetch("/api/restaurantcustomers", {
+                method: "DELETE",
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+        if (response.status === 200) {
+            fetch("/api/restaurantcustomers")
+            .then(data => data.json())
+            .then(json => setTableData(json))
+            .catch(err => console.error(err));
+        } else {
+            console.error(`Failed to delete restaurantcustomers with id = ${id}, status code = ${response.status}`);
+        }
+    }
+
     return (
         <>
             <SideBar/>
@@ -59,7 +82,7 @@ export default function RestaurantCustomersPage() {
             </form>
 
             <div className="table-container">
-                <RestaurantCustomersTable data={tableData}/>
+                <RestaurantCustomersTable data={tableData} onDelete={onDelete}/>
             </div>
             <br/>
         </>

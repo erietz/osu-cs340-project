@@ -1,8 +1,8 @@
 function DriverOrdersRow( {driverOrder} ) {
     return (
         <tr>
-            <td>{driverOrder.orderID}</td>
             <td>{driverOrder.driverID}</td>
+            <td>{driverOrder.orderID}</td>
             <td>{driverOrder.firstName}</td>
             <td>{driverOrder.lastName}</td>
         </tr>
@@ -14,8 +14,8 @@ export default function DriverOrdersTable({data}) {
         <table id="driverorders" className="center">
             <thead>
                 <tr>
-                    <td>Order ID</td>
                     <td>Driver ID</td>
+                    <td>Order ID</td>
                     <td>First Name</td>
                     <td>Last Name</td>
                 </tr>
