@@ -9,12 +9,6 @@ export default function HomePage() {
 
             <h1>HatchSprint Home Page</h1>
 
-            <p>
-        On this page there will be a fancy logo here. We will also include
-        fancy icons that correspond to each of the page links below.
-
-            </p>
-
             <ul>
                 <li>
                     <Link to="/restaurants">Restaurants</Link>
@@ -36,6 +30,9 @@ export default function HomePage() {
                 </li>
                 <li>
                     <Link to="/restaurantcustomers">RestaurantCustomers</Link>
+                </li>
+                <li>
+                    <Link to="/driverorders">DriverOrders</Link>
                 </li>
             </ul>
         </>
