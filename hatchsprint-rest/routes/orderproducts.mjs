@@ -1,4 +1,4 @@
-import express from "express";
+import express, { query } from "express";
 import pool from "../dbConnector.mjs";
 
 const orderproducts = express.Router();
