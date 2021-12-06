@@ -63,7 +63,40 @@ orderproducts.delete("/", (req, res) => {
     )
 });
 
+orderproducts.post("/", (req, res) => {
 
+    const orderID = parseInt(req.body.orderID);
+    const productID = parseInt(req.body.productID);
+
+    const query1 = `SELECT restaurantId FROM Orders WHERE orderID = ${orderID}`;
+    const query2 = `SELECT restaurantId FROM Products WHERE productID = ${productID}`;
+    const query3 = `INSERT INTO OrderProducts (orderID, productID) VALUES (${orderID}, ${productID})`;
+
+    pool.query(query1, (error, results, fields) => {
+        let restaurantId;
+        if (error) {
+            console.error(error);
+        } else {
+            restaurantId = results[0].restaurantId;
+        }
+        pool.query(query2, (error, results, fields) => {
+            console.log("RESTAURANTID", restaurantId);
+            if (error) {
+                console.error(error);
+            } else if (restaurantId !== results[0].restaurantId) {
+                res.json({ error: "Product does not belong to restaurant" });
+                return;
+            }
+            pool.query(query3, (error, results, fields) => {
+                if (error) {
+                    console.error(error)
+                } else {
+                    res.status(201).json(results);
+                }
+            })
+        })
+    })
+});
 
 
 export default orderproducts;

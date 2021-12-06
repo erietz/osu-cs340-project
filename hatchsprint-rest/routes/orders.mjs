@@ -46,6 +46,8 @@ const insertIntoRestaurantCustomers = (restaurantID, customerID) => {
 };
 
 orders.get("/", (_, res) => {
+    const orderID = _.query.orderID
+    if (orderID === undefined || orderID === null){
     pool.query("SELECT * FROM Orders;", (error, results, _) => {
         if (error) {
             console.error(error);
@@ -54,6 +56,47 @@ orders.get("/", (_, res) => {
             res.status(200).json(results);
         }
     });
+}
+    else{
+        pool.query(
+            "SELECT * FROM Orders o WHERE o.orderID = ?;",
+            [orderID],
+            (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    }
+});
+
+orders.get("/restaurantproducts", (_, res) => {
+    const orderID = _.query.orderID
+    if (orderID === undefined || orderID === null){
+    pool.query("SELECT * FROM Orders;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+            res.status(400).json(error);
+        } else {
+            res.status(200).json(results);
+        }
+    });
+}
+    else{
+        pool.query(
+            "SELECT p.* FROM Products p LEFT JOIN Orders o ON p.restaurantID = o.restaurantID WHERE o.orderID = ?;",
+            [orderID],
+            (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    }
 });
 
 orders.delete("/", (req, res) => {

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import Popup from "reactjs-popup";
 import SideBar from '../components/Sidebar.js';
 import RestaurantCustomersTable from '../components/RestaurantCustomersTable.js';
 import RestaurantDataList from '../components/RestaurantDataList.js';
+import AddCustomerToRestaurant from "../components/AddCustomerToRestaurantForm.js";
 
 export default function RestaurantCustomersPage() {
     const [tableData, setTableData] = useState([]);
@@ -67,6 +69,11 @@ export default function RestaurantCustomersPage() {
             <br/>
 
             <h1>RestaurantCustomers</h1>
+
+            <Popup trigger={<button> Add Customer to Restaurant </button>} modal className="my-popup">
+                <h2>Add Customer to Restaurant</h2>
+                <AddCustomerToRestaurant/></Popup>
+
             <form onSubmit={search}>
                 <label htmlFor="restaurantcustomers">
                 Search RestaurantCustomers by Restaurant ID.

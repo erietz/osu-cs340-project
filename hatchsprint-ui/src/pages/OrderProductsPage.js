@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import SideBar from '../components/Sidebar.js';
+import AddProductToOrder from '../components/AddProductToOrderForm';
 import OrderProductsTable from '../components/OrderProductsTable.js';
 import OrderDataList from '../components/OrderDataList.js';
+import ProductDataList from "../components/ProductDataList.js";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 export default function OrderProductsPage() {
     const [tableData, setTableData] = useState([]);
@@ -64,8 +68,11 @@ export default function OrderProductsPage() {
             <SideBar/>
             <br/>
 
-            <h1>View OrderProducts</h1>
+            <h1>OrderProducts</h1>
 
+            <Popup trigger={<button> Add Product to Order </button>} modal className="my-popup">
+                <h2>Add Product to Order</h2>
+                <AddProductToOrder/></Popup>
 
             <form onSubmit={Search} method="GET">
                 <label htmlFor="orderID">Search OrderProducts by Order ID</label>

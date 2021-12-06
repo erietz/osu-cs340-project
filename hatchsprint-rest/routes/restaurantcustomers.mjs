@@ -44,6 +44,52 @@ restaurantcustomers.get("/", (req, res) => {
     }
 });
 
+restaurantcustomers.get("/availablecustomers", (_, res) => {
+    const restaurantID = _.query.restaurantID
+    if (restaurantID === undefined || restaurantID === null){
+    pool.query("SELECT * FROM Customers;", (error, results, _) => {
+        if (error) {
+            console.error(error);
+            res.status(400).json(error);
+        } else {
+            res.status(200).json(results);
+        }
+    });
+}
+    else{
+        pool.query(
+            "SELECT c.* FROM Customers c WHERE c.customerID NOT IN (SELECT customerID FROM RestaurantCustomers WHERE restaurantID = ?)",
+            [restaurantID],
+            (error, results, _) => {
+            if (error) {
+                console.error(error);
+                res.status(400).json(error);
+            } else {
+                res.status(200).json(results);
+            }
+        });
+    }
+});
+
+
+restaurantcustomers.post("/", (req, res) => {
+
+    const customerID = parseInt(req.body.customerID);
+    const restaurantID = parseInt(req.body.restaurantID);
+
+    const query = `INSERT INTO RestaurantCustomers (customerID, restaurantID) VALUES (${customerID}, ${restaurantID})`;
+
+    pool.query(query, (error, results, fields) => {
+        let restaurantId;
+        if (error) {
+            console.error(error);
+        } else {
+            res.status(201).json(results);
+        }
+
+    })
+});
+
 restaurantcustomers.delete("/", (req, res) => {
     const restaurantID = req.body.restaurantID;
     const customerID = req.body.customerID;

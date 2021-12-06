@@ -20,7 +20,7 @@ export default function OrderProductsTable({ data, onDelete }) {
                     <td>Order ID</td>
                     <td>Product ID</td>
                     <td>Product Name</td>
-                    <td>Remove Customer</td>
+                    <td>Remove Product</td>
                 </tr>
             </thead>
             <tbody>
