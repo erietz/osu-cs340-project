@@ -86,8 +86,8 @@ orders.get("/restaurantproducts", (_, res) => {
 }
     else{
         pool.query(
-            "SELECT p.* FROM Products p LEFT JOIN Orders o ON p.restaurantID = o.restaurantID WHERE o.orderID = ?;",
-            [orderID],
+            "SELECT p.* FROM Products p LEFT JOIN Orders o ON p.restaurantID = o.restaurantID WHERE o.orderID = ? AND p.productID NOT IN (SELECT productID FROM OrderProducts WHERE orderID = ?);",
+            [orderID, orderID],
             (error, results, _) => {
             if (error) {
                 console.error(error);
